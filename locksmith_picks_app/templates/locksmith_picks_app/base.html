@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="{% url 'index' %}" id="navbar__logo">LOCKSMITH PICKS</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="{% url 'defvpos' %}" class="navbar__links"> Defense vs. Position </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{% url 'l10' %}" class="navbar__links"> Last 10 Games Stats </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{% url 'hotandcold' %}" class="navbar__links"> Hot and Cold Streaks </a>
+                </li> 
+                <li class="navbar__btn">
+                    <a href="{% url 'mailinglist' %}" class="button"> Mailing List </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,87 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'locksmith_picks_app/styles.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <title>Locksmith Picks</title>
-</head>
-<body>
-    <main>
-        <nav class="navbar">
-            <div class="navbar__container">
-                <a href="index.html" id="navbar__logo">LOCKSMITH PICKS</a>
-                <div class="navbar__toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    
-                </div>
-                <ul class="navbar__menu">
-                    <li class="navbar__item">
-                        <a href="{% url 'defvpos' %}" class="navbar__links"> Defense vs. Position </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="{% url 'l10' %}" class="navbar__links"> Last 10 Games Stats </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="{% url 'hotandcold' %}" class="navbar__links"> Hot and Cold Streaks </a>
-                    </li> 
-                    <li class="navbar__btn">
-                        <a href="{% url 'mailinglist' %}" class="button"> Mailing List </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+{% extends 'locksmith_picks_app/base.html' %}
+{% load static %}
 
-        <div class="main">
-            <div class="main__container">
-                <div class="main__content">
-                    <h1>A Data-Driven Edge to Player Props for Massive Payouts</h1>
-                    <p>The ultimate toolkit for smart NBA prop betting.</p>
-                    <button class="main__btn"> 
-                        <a href="{% url 'mailinglist' %}">
-                            Join our Mailing List
-                        </a>
-                    </button>
+{% block title %}
+    <title>Locksmith Picks</title>
+    <link rel="stylesheet" href="{% static 'locksmith_picks_app/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>A Data-Driven Edge to Player Props for Massive Payouts</h1>
+                <p>The ultimate toolkit for smart NBA prop betting.</p>
+                <button class="main__btn"> 
+                    <a href="{% url 'mailinglist' %}">
+                        Join our Mailing List
+                    </a>
+                </button>
+            </div>
+            <div class="main__img--container">
+                <img src="{% static 'locksmith_picks_app/images/pic1.svg' %}" alt="pic" id="main__img">
+            </div>       
+        </div>
+    </div>
+
+    <section class="tools">
+        <div class="container">
+            <h2>Tools</h2>
+            <p class="description">
+                These tools will help you make the best picks for your NBA parlays.
+            </p>
+            <div class="tools-grid">
+                <div class="tool">
+                    <i class="icon"></i> 
+                    <h3>Defense vs. Position</h3>
+                    <p>This tool allows you to look at which teams allows the most or least of a stat to a specific position.</p>
                 </div>
-                <div class="main__img--container">
-                    <img src="{% static 'locksmith_picks_app/images/pic1.svg' %}" alt="pic" id="main__img">
-                </div>       
+                <div class="tool">
+                    <i class="icon"></i>
+                    <h3>Last 10 Games</h3>
+                    <p>This tool shows you the stats of any given player over the last 10 games.</p>
+                </div>`
+                <div class="tool">
+                    <i class="icon"></i>
+                    <h3>Hot and Cold Streaks</h3>
+                    <p>This tool shows you which players are on a hot streak and which players are on a cold streak.</p>
+                </div>
             </div>
         </div>
-
-        <section class="tools">
-            <div class="container">
-                <h2>Tools</h2>
-                <p class="description">
-                    These tools will help you make the best picks for your NBA parlays.
-                </p>
-                <div class="tools-grid">
-                    <div class="tool">
-                        <i class="icon"></i> 
-                        <h3>Defense vs. Position</h3>
-                        <p>This tool allows you to look at which teams allows the most or least of a stat to a specific position.</p>
-                    </div>
-                    <div class="tool">
-                        <i class="icon"></i>
-                        <h3>Last 10 Games</h3>
-                        <p>This tool shows you the stats of any given player over the last 10 games.</p>
-                    </div>`
-                    <div class="tool">
-                        <i class="icon"></i>
-                        <h3>Hot and Cold Streaks</h3>
-                        <p>This tool shows you which players are on a hot streak and which players are on a cold streak.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </main>
+    </section>
     <script src="{% static 'locksmith_picks_app/app.js' %}"></script>
-</body>
-</html>
+{% endblock %}
