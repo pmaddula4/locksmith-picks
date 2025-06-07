@@ -1,50 +1,162 @@
 from django.db import models
 
 # Create your models here.
+
+class Team(models.Model):
+    HAWKS = 'ATL'
+    CELTICS = 'BOS'
+    NETS = 'BRK'
+    HORNETS = 'CHA'
+    BULLS = 'CHI'
+    CAVALIERS = 'CLE'
+    MAVERICKS = 'DAL'
+    NUGGETS = 'DEN'
+    WARRIORS = 'GSW'
+    ROCKETS = 'HOU'
+    PACERS = 'IND'
+    CLIPPERS = 'LAC'
+    LAKERS = 'LAL'
+    GRIZZLIES = 'MEM'
+    HEAT = 'MIA'
+    BUCKS = 'MIL'
+    TIMBERWOLVES = 'MIN'
+    PELICANS = 'NOP'
+    KNICKS = 'NYK'
+    THUNDER = 'OKC'
+    MAGIC = 'ORL'
+    SEVENTYSIXERS = 'PHI'
+    SUNS = 'PHX'
+    BLAZERS = 'POR'
+    KINGS = 'SAC'
+    SPURS = 'SAS'
+    RAPTORS = 'TOR'
+    JAZZ = 'UTA'
+    WIZARDS = 'WAS'
+    PISTONS = 'DET'
+    TEAMS = [
+        (HAWKS, 'Atlanta Hawks'),
+        (CELTICS, 'Boston Celtics'),
+        (NETS, 'Brooklyn Nets'),
+        (HORNETS, 'Charlotte Hornets'),
+        (BULLS, 'Chicago Bulls'),
+        (CAVALIERS, 'Cleveland Cavaliers'),
+        (MAVERICKS, 'Dallas Mavericks'),
+        (NUGGETS, 'Denver Nuggets'),
+        (WARRIORS, 'Golden State Warriors'),
+        (ROCKETS, 'Houston Rockets'),
+        (PACERS, 'Indiana Pacers'),
+        (CLIPPERS, 'Los Angeles Clippers'),
+        (LAKERS, 'Los Angeles Lakers'),
+        (GRIZZLIES, 'Memphis Grizzlies'),
+        (HEAT, 'Miami Heat'),
+        (BUCKS, 'Milwaukee Bucks'),
+        (TIMBERWOLVES, 'Minnesota Timberwolves'),
+        (PELICANS, 'New Orleans Pelicans'),
+        (KNICKS, 'New York Knicks'),
+        (THUNDER, 'Oklahoma City Thunder'),
+        (MAGIC, 'Orlando Magic'),
+        (SEVENTYSIXERS, 'Philadelphia 76ers'),
+        (SUNS, 'Phoenix Suns'),
+        (BLAZERS, 'Portland Trail Blazers'),
+        (KINGS, 'Sacramento Kings'),
+        (SPURS, 'San Antonio Spurs'),
+        (RAPTORS, 'Toronto Raptors'),
+        (JAZZ, 'Utah Jazz'),
+        (WIZARDS, 'Washington Wizards'),
+        (PISTONS, 'Detroit Pistons')
+    ]
+    name = models.CharField(max_length = 3, choices = TEAMS)
+    pts_vs_pg = models.FloatField(default = 0.0)
+    pts_vs_sg = models.FloatField(default = 0.0)
+    pts_vs_sf = models.FloatField(default = 0.0)
+    pts_vs_pf = models.FloatField(default = 0.0)
+    pts_vs_c = models.FloatField(default = 0.0)
+    rebs_vs_pg = models.FloatField(default = 0.0)
+    rebs_vs_sg = models.FloatField(default = 0.0)
+    rebs_vs_sf = models.FloatField(default = 0.0)
+    rebs_vs_pf = models.FloatField(default = 0.0)
+    rebs_vs_c = models.FloatField(default = 0.0)
+    asts_vs_pg = models.FloatField(default = 0.0)
+    asts_vs_sg = models.FloatField(default = 0.0)
+    asts_vs_sf = models.FloatField(default = 0.0)
+    asts_vs_pf = models.FloatField(default = 0.0)
+    asts_vs_c = models.FloatField(default = 0.0)
+    stls_vs_pg = models.FloatField(default = 0.0)
+    stls_vs_sg = models.FloatField(default = 0.0)
+    stls_vs_sf = models.FloatField(default = 0.0)
+    stls_vs_pf = models.FloatField(default = 0.0)
+    stls_vs_c = models.FloatField(default = 0.0)
+    blks_vs_pg = models.FloatField(default = 0.0)
+    blks_vs_sg = models.FloatField(default = 0.0)
+    blks_vs_sf = models.FloatField(default = 0.0)
+    blks_vs_pf = models.FloatField(default = 0.0)
+    blks_vs_c = models.FloatField(default = 0.0)
+    
+    def __str__(self):
+        return self.name
 class Player(models.Model):
-    name = models.CharField(max_length = 100)
-    ptsAvg = models.FloatField(default = 0.0)
-    rebsAvg = models.FloatField(default = 0.0)
-    astsAvg = models.FloatField(default = 0.0)
-    stlsAvg = models.FloatField(default = 0.0)
-    blksAvg = models.FloatField(default = 0.0)
-    ptsl10 = models.FloatField(default = 0.0)
-    rebsl10 = models.FloatField(default = 0.0)
-    astsl10 = models.FloatField(default = 0.0)
-    stlsl10 = models.FloatField(default = 0.0)
-    blksl10 = models.FloatField(default = 0.0)
+    POINTGUARD = 'PG'
+    SHOOTINGGUARD = 'SG'
+    SMALLFORWARD = 'SF'
+    POWERFORWARD = 'PF'
+    CENTER = 'C'
+    POSITIONS = [
+        (POINTGUARD, 'Point Guard'),
+        (SHOOTINGGUARD, 'Shooting Guard'),
+        (SMALLFORWARD, 'Small Forward'),
+        (POWERFORWARD, 'Power Forward'),
+        (CENTER, 'Center')
+    ]
+    name = models.CharField(max_length = 25)
+    position = models.CharField(max_length = 2, choices = POSITIONS)
+    ppg = models.FloatField(default = 0.0)
+    rpg = models.FloatField(default = 0.0)
+    apg = models.FloatField(default = 0.0)
+    spg = models.FloatField(default = 0.0)
+    bpg = models.FloatField(default = 0.0)
+    ppg10 = models.FloatField(default = 0.0)
+    rpg10 = models.FloatField(default = 0.0)
+    apg10 = models.FloatField(default = 0.0)
+    spg10 = models.FloatField(default = 0.0)
+    bpg10 = models.FloatField(default = 0.0)
     team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'players')
 
     def __str__(self):
         return self.name
     
     def points(self):
-        return self.ptsAvg
+        return self.ppg
     
     def rebounds(self):
-        return self.rebsAvg
+        return self.rpg
     
     def assists(self):
-        return self.astsAvg   
-    
+        return self.apg
+        
     def steals(self):
-        return self.stlsAvg
+        return self.spg
     
     def blocks(self):
-        return self.blksAvg
+        return self.bpg
     
     def points_l10(self):
-        return self.ptsl10
+        return self.ppg10
     
     def rebounds_l10(self):
-        return self.rebsl10
+        return self.rpg10
     
     def assists_l10(self):
-        return self.astsl10
+        return self.apg10
     
     def steals_l10(self):
-        return self.stlsl10
+        return self.spg10
     
     def blocks_l10(self):
-        return self.blksl10
+        return self.bpg10
+    
+    def team(self):
+        return self.team.name
+    
+    def position(self):
+        return self.position
     
