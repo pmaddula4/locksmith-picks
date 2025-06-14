@@ -332,7 +332,16 @@
     line-height: 1.6;
 }
 
+.mailing-list {
+    background-color: #131313;
+    min-height: 100vh;
+}
 
+.mailing-list p {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
 
 @media screen and (max-width: 1080px){
     .main__container {

@@ -24,7 +24,7 @@ class Team(models.Model):
     KNICKS = 'NYK'
     THUNDER = 'OKC'
     MAGIC = 'ORL'
-    SEVENTYSIXERS = 'PHI'
+    SIXERS = 'PHI'
     SUNS = 'PHX'
     BLAZERS = 'POR'
     KINGS = 'SAC'
@@ -55,7 +55,7 @@ class Team(models.Model):
         (KNICKS, 'New York Knicks'),
         (THUNDER, 'Oklahoma City Thunder'),
         (MAGIC, 'Orlando Magic'),
-        (SEVENTYSIXERS, 'Philadelphia 76ers'),
+        (SIXERS, 'Philadelphia 76ers'),
         (SUNS, 'Phoenix Suns'),
         (BLAZERS, 'Portland Trail Blazers'),
         (KINGS, 'Sacramento Kings'),
@@ -93,7 +93,8 @@ class Team(models.Model):
     blks_vs_c = models.FloatField(default = 0.0)
     
     def __str__(self):
-        return self.name
+        return self.name  
+
 class Player(models.Model):
     POINTGUARD = 'PG'
     SHOOTINGGUARD = 'SG'
@@ -159,4 +160,13 @@ class Player(models.Model):
     
     def position(self):
         return self.position
+    
+class MailingListSubscriber(models.Model):
+    first_name = models.CharField(max_length = 30)
+    last_name = models.CharField(max_length = 30)
+    favorite_team = models.CharField(max_length = 50, blank = True, null = True)
+    email = models.EmailField(unique = True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} ({self.email})"
     

@@ -1,7 +1,17 @@
 {% extends 'locksmith_picks_app/base.html' %}
 {% load static %}
 
-{% block title %}
-    <title>Mailing List</title>
-    <link rel="stylesheet" href="{% static 'locksmith_picks_app/styles.css' %}">
+{% block title %}Mailing List{% endblock %}
+
+{% block content %}
+    <div class="mailing-list">
+        <h1>Join Our Mailing List</h1>
+        <p>Stay updated with the latest NBA prop betting insights and tools.</p>
+        <form action = "" method = "POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+    </div>
+    
+    <script src="{% static 'locksmith_picks_app/app.js' %}"></script>
 {% endblock %}
