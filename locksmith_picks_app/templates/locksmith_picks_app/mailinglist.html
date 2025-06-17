@@ -1,15 +1,32 @@
 {% extends 'locksmith_picks_app/base.html' %}
 {% load static %}
 
-{% block title %}Mailing List{% endblock %}
+{% block title %} Mailing List {% endblock %}
 
 {% block content %}
     <div class="mailing-list">
         <h1>Join Our Mailing List</h1>
         <p>Stay updated with the latest NBA prop betting insights and tools.</p>
-        <form action = "" method = "POST">
+        <form action="" method="POST" class="mailing-list-form">
             {% csrf_token %}
-            {{ form.as_p }}
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name">
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name">
+
+            <label for="favorite_team">Favorite Team</label>
+            <select name="favorite_team" id="favorite_team">
+                <option value="">Select a team</option>
+                {% for team in teams %}
+                    <option value="{{ team.id }}">{{ team.get_name_display }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email">
+
+            <button type="submit">Join</button>
         </form>
     </div>
     

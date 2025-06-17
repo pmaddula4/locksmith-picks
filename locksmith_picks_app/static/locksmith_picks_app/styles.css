@@ -337,11 +337,61 @@
     min-height: 100vh;
 }
 
+#mailing-list-head {
+    font-size: 3rem;
+    color: #CC5500;
+    text-align: center;
+    margin-top: 50px;
+}
+
 .mailing-list p {
     font-size: 1.5rem;
     color: #fff;
     text-align: center;
 }
+
+.mailing-list-form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+}
+
+.mailing-list-form input,
+.mailing-list-form select,
+.mailing-list-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.mailing-list-form button,
+.mailing-list-form input[type="submit"] {
+    background-color: #CC5500;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.mailing-list-form button:hover,
+.mailing-list-form input[type="submit"]:hover {
+    background-color: #e76f00;
+}
+
+.mailing-list-form label {
+    color: #fff;
+    font-weight: 600;
+}
+
 
 @media screen and (max-width: 1080px){
     .main__container {
@@ -354,7 +404,7 @@
         height: 90vh;
     }
 
-    .main__content{
+    .main__content {
         text-align: center;
     }
 

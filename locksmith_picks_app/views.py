@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .forms import MailingListForm
+from .models import Team
 
 # Create your views here.
 def index(request):
@@ -14,4 +16,7 @@ def l10(request):
     return render(request, 'locksmith_picks_app/l10.html')
 
 def mailinglist(request):
-    return render(request, 'locksmith_picks_app/mailinglist.html')
+    form = MailingListForm()
+    teams = list(Team.objects.all())
+    teams.sort(key = lambda t: t.get_name_display())
+    return render(request, 'locksmith_picks_app/mailinglist.html', {'form': form, 'teams': teams})

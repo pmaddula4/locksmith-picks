@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Team(models.Model):
     HAWKS = 'ATL'
     CELTICS = 'BOS'
@@ -164,9 +162,10 @@ class Player(models.Model):
 class MailingListSubscriber(models.Model):
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
-    favorite_team = models.CharField(max_length = 50, blank = True, null = True)
+    favorite_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True)
     email = models.EmailField(unique = True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.email})"
     
+
