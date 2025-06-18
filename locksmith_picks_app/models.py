@@ -64,34 +64,9 @@ class Team(models.Model):
         (PISTONS, 'Detroit Pistons')
     ]
     name = models.CharField(max_length = 3, choices = TEAMS)
-    pts_vs_pg = models.FloatField(default = 0.0)
-    pts_vs_sg = models.FloatField(default = 0.0)
-    pts_vs_sf = models.FloatField(default = 0.0)
-    pts_vs_pf = models.FloatField(default = 0.0)
-    pts_vs_c = models.FloatField(default = 0.0)
-    rebs_vs_pg = models.FloatField(default = 0.0)
-    rebs_vs_sg = models.FloatField(default = 0.0)
-    rebs_vs_sf = models.FloatField(default = 0.0)
-    rebs_vs_pf = models.FloatField(default = 0.0)
-    rebs_vs_c = models.FloatField(default = 0.0)
-    asts_vs_pg = models.FloatField(default = 0.0)
-    asts_vs_sg = models.FloatField(default = 0.0)
-    asts_vs_sf = models.FloatField(default = 0.0)
-    asts_vs_pf = models.FloatField(default = 0.0)
-    asts_vs_c = models.FloatField(default = 0.0)
-    stls_vs_pg = models.FloatField(default = 0.0)
-    stls_vs_sg = models.FloatField(default = 0.0)
-    stls_vs_sf = models.FloatField(default = 0.0)
-    stls_vs_pf = models.FloatField(default = 0.0)
-    stls_vs_c = models.FloatField(default = 0.0)
-    blks_vs_pg = models.FloatField(default = 0.0)
-    blks_vs_sg = models.FloatField(default = 0.0)
-    blks_vs_sf = models.FloatField(default = 0.0)
-    blks_vs_pf = models.FloatField(default = 0.0)
-    blks_vs_c = models.FloatField(default = 0.0)
     
     def __str__(self):
-        return self.name  
+        return self.name
 
 class Player(models.Model):
     POINTGUARD = 'PG'
@@ -159,10 +134,25 @@ class Player(models.Model):
     def position(self):
         return self.position
     
+class DVP(models.Model):
+    team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'dvp')
+    position = models.CharField(max_length = 2, choices = Player.POSITIONS)
+    points_allowed = models.FloatField(default = 0.0)
+    rebounds_allowed = models.FloatField(default = 0.0)
+    assists_allowed = models.FloatField(default = 0.0)
+    steals_allowed = models.FloatField(default = 0.0)
+    blocks_allowed = models.FloatField(default = 0.0)
+
+    class Meta:
+        unique_together = ('team', 'position')
+
+    def __str__(self):
+        return f"{self.team.name} - {self.get_position_display()}"
+    
 class MailingListSubscriber(models.Model):
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
-    favorite_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True)
+    favorite_team = models.ForeignKey(Team, on_delete = models.SET_NULL, null = True, blank = True)
     email = models.EmailField(unique = True)
 
     def __str__(self):

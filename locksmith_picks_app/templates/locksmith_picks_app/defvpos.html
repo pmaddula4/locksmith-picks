@@ -5,3 +5,45 @@
     <title>Defense vs. Position</title>
     <link rel="stylesheet" href="{% static 'locksmith_picks_app/styles.css' %}">
 {% endblock %}
+
+{% block content %}
+    <div class = "dvp">
+        <div class = "pos-select">
+            <form method = "GET">
+                <label for="position">Select Position:</label>
+                <select name="position" id="position">
+                    <option value="PG" {% if selected == "PG" %} {% endif %}>Point Guard</option>
+                    <option value="SG" {% if selected == "SG" %} {% endif %}>Shooting Guard</option>
+                    <option value="SF" {% if selected == "SF" %} {% endif %}>Small Forward</option>
+                    <option value="PF" {% if selected == "PF" %} {% endif %}>Power Forward</option>
+                    <option value="C" {% if selected == "C" %} {% endif %}>Center</option>
+                </select>
+                <button type="submit">Select</button>
+            </form>
+        </div>
+
+        <div class = "dvp-table">
+            <table>
+                <tr>
+                    <th>Team</th>
+                    <th>Points Allowed</th>
+                    <th>Rebounds Allowed</th>
+                    <th>Assists Allowed</th>
+                    <th>Steals Allowed</th>
+                    <th>Blocks Allowed</th>
+                </tr>
+                {% for stat in stats %}
+                    <tr>
+                        <td>{{ stat.team.get_name_display }}</td>
+                        <td>{{ stat.points_allowed }}</td>
+                        <td>{{ stat.rebounds_allowed }}</td>
+                        <td>{{ stat.assists_allowed }}</td>
+                        <td>{{ stat.steals_allowed }}</td>
+                        <td>{{ stat.blocks_allowed }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    
+{% endblock %}

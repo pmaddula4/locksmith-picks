@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from .forms import MailingListForm
-from .models import Team, MailingListSubscriber
+from .models import Team, MailingListSubscriber, DVP
 
 # Create your views here.
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
 
 def defvpos(request):
-    return render(request, 'locksmith_picks_app/defvpos.html')
+    position = request.GET.get('position', 'PG')
+    stats = DVP.objects.filter(position = position)
+
+    return render(request, 'locksmith_picks_app/defvpos.html', {'stats': stats, 'selected': position})
 
 def hotandcold(request):
     return render(request, 'locksmith_picks_app/hotandcold.html')
@@ -33,10 +36,10 @@ def mailinglist(request):
         else:
             favorite_team = None
         MailingListSubscriber.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            favorite_team=favorite_team,
-            email=email
+            first_name = first_name,
+            last_name = last_name,
+            favorite_team = favorite_team,
+            email = email
         )
         return redirect('index')
     

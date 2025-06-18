@@ -395,6 +395,39 @@
     font-weight: 600;
 }
 
+.dvp {
+    background-color: #131313;
+    min-height: 100vh;
+}
+
+.pos-select {
+    color: #fff;
+    font-size: 1.15rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dvp-table {
+  width: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 5px 10px;
+  color: #fff;
+  text-align: center;
+}
+
+
+.dvp-table td,
+.dvp-table th {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+}
+
 
 @media screen and (max-width: 1080px){
     .main__container {
