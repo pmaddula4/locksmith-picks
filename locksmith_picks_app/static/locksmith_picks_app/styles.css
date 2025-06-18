@@ -351,11 +351,12 @@
 }
 
 .mailing-list-form {
-    max-width: 500px;
+    max-width: 900px;
     margin: 40px auto;
     padding: 20px;
     background-color: #1a1a1a;
     border-radius: 8px;
+    max-height: 1200px;
 }
 
 .mailing-list-form input,
@@ -371,8 +372,8 @@
 
 .mailing-list-form button,
 .mailing-list-form input[type="submit"] {
-    background-color: #CC5500;
-    color: #fff;
+    background-color: #fff;
+    color: #CC5500;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -380,11 +381,13 @@
     margin-top: 10px;
     width: 100%;
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .mailing-list-form button:hover,
 .mailing-list-form input[type="submit"]:hover {
-    background-color: #e76f00;
+    background-color: #131313;
+    transition: all 0.3s ease;
 }
 
 .mailing-list-form label {
