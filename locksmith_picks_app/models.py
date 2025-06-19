@@ -128,12 +128,6 @@ class Player(models.Model):
     def blocks_l10(self):
         return self.bpg10
     
-    def team(self):
-        return self.team.name
-    
-    def position(self):
-        return self.position
-    
 class DVP(models.Model):
     team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'dvp')
     position = models.CharField(max_length = 2, choices = Player.POSITIONS)
