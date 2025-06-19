@@ -8,9 +8,28 @@ def index(request):
 
 def defvpos(request):
     position = request.GET.get('position', 'PG')
-    stats = DVP.objects.filter(position = position)
+    sort = request.GET.get('sort', 'team__name')
+    order = request.GET.get('order', 'asc')
 
-    return render(request, 'locksmith_picks_app/defvpos.html', {'stats': stats, 'selected': position})
+    sort_options = [
+        'team__name',
+        'points_allowed',
+        'rebounds_allowed',
+        'assists_allowed',
+        'steals_allowed',
+        'blocks_allowed'
+    ]
+
+    if sort not in sort_options:
+        sort = 'team__name'
+    if order == 'asc':
+        sort_field = sort
+    else:
+        sort_field = f"-{sort}"
+
+    stats = DVP.objects.filter(position = position).order_by(sort_field)
+
+    return render(request, 'locksmith_picks_app/defvpos.html', {'stats': stats, 'selected': position, 'current_sort': sort, 'current_order': order})
 
 def hotandcold(request):
     return render(request, 'locksmith_picks_app/hotandcold.html')

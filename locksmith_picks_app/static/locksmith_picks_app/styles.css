@@ -428,6 +428,15 @@
     border-radius: 8px;
 }
 
+th a {
+    color: #CC5500;
+    text-decoration: none;
+}
+
+th a:hover {
+    text-decoration: underline;
+}
+
 
 @media screen and (max-width: 1080px){
     .main__container {
