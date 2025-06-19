@@ -437,6 +437,30 @@ th a:hover {
     text-decoration: underline;
 }
 
+.pos-select button {
+    color: #fff;
+    background-color: #CC5500;
+    padding: 10px 20px;
+    border-radius: 32px;
+    font-weight: bold;
+}
+
+.pos-select button:hover {
+    background-color: #131313;
+    color: #CC5500;
+    transition: all 0.3s ease;    
+}
+
+.pos-select select {
+    padding: 10px 20px;
+    border-radius: 32px;
+    border: none;
+    background-color: #fff;
+    color: #131313;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
 
 @media screen and (max-width: 1080px){
     .main__container {
