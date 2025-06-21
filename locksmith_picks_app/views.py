@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import MailingListForm
-from .models import Team, MailingListSubscriber, DVP
+from .models import Team, MailingListSubscriber, DVP, Player
 
 # Create your views here.
 def index(request):
@@ -35,7 +35,9 @@ def hotandcold(request):
     return render(request, 'locksmith_picks_app/hotandcold.html')
 
 def l10(request):
-    return render(request, 'locksmith_picks_app/l10.html')
+    players = Player.objects.all()
+
+    return render(request, 'locksmith_picks_app/l10.html', {'players': players})
 
 def mailinglist(request):
     form = MailingListForm()

@@ -1,7 +1,36 @@
 {% extends 'locksmith_picks_app/base.html' %}
 {% load static %}
 
-{% block title %}
-    <title>Last 10 Games Stats</title>
-    <link rel="stylesheet" href="{% static 'locksmith_picks_app/styles.css' %}">
+{% block title %} Locksmith Picks - Last 10 Games Stats {% endblock %}
+
+{% block content %}
+    <div class="l10">
+    <h1>Last 10 Games Stats</h1>
+
+    <div class="l10-header">
+        <span>Player</span>
+        <span>Position</span>
+        <span>Team</span>
+        <span>Points</span>
+        <span>Rebounds</span>
+        <span>Assists</span>
+        <span>Steals</span>
+        <span>Blocks</span>
+    </div>
+    
+    {% for player in players %}
+        <div class="player-info">
+            <span>{{ player.name }}</span>
+            <span>{{ player.position }}</span>
+            <span>{{ player.team.get_name_display }}</span>
+            <span>{{ player.ppg10 }}</span>
+            <span>{{ player.rpg10 }}</span>
+            <span>{{ player.apg10 }}</span>
+            <span>{{ player.spg10 }}</span>
+            <span>{{ player.bpg10 }}</span>
+        </div>
+    {% endfor %}
+
+    </div>
+
 {% endblock %}

@@ -474,6 +474,49 @@ th a:hover {
     margin: 0 10px;
 }
 
+.l10 {
+    background-color: #131313;
+    min-height: 100vh;
+}
+
+.l10 h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+}
+
+.l10-header {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-color: #131313;
+    color: #CC5500;
+    font-weight: bold;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 1400px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.player-info {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-color: #131313;
+    color: #CC5500;
+    padding: 15px;
+    margin: 20px auto 0px;
+    max-width: 1400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.player-info span {
+    text-align: center;
+}
+
+
 
 @media screen and (max-width: 1080px){
     .main__container {
