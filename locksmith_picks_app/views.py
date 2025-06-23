@@ -45,86 +45,86 @@ def hotandcold(request):
     hotblk = {}
     coldblk = {}
     for player in players:
-        if player.ppg - player.ppg10 > 5:
+        if player.ppg10 - player.ppg > 5:
             if len(hotpts) < 5:
-                hotpts[player] = round(player.ppg - player.ppg10, 1)
+                hotpts[player] = round(player.ppg10 - player.ppg, 1)
             else:
                 min_player = min(hotpts, key=hotpts.get)
-                if player.ppg - player.ppg10 > hotpts[min_player]:
+                if player.ppg10 - player.ppg > hotpts[min_player]:
                     del hotpts[min_player]
-                    hotpts[player] = round(player.ppg - player.ppg10, 1)
-        elif player.ppg - player.ppg10 < -5:
+                    hotpts[player] = round(player.ppg10 - player.ppg, 1)
+        elif player.ppg10 - player.ppg < -5:
             if len(coldpts) < 5:
-                coldpts[player] = round(player.ppg - player.ppg10, 1)
+                coldpts[player] = round(player.ppg10 - player.ppg, 1)
             else:
                 max_player = max(coldpts, key=coldpts.get)
-                if player.ppg - player.ppg10 < coldpts[max_player]:
+                if player.ppg10 - player.ppg < coldpts[max_player]:
                     del coldpts[max_player]
-                    coldpts[player] = round(player.ppg - player.ppg10, 1)
-        if player.rpg - player.rpg10 > 3:
+                    coldpts[player] = round(player.ppg10 - player.ppg, 1)
+        if player.rpg10 - player.rpg > 3:
             if len(hotreb) < 5:
-                hotreb[player] = round(player.rpg - player.rpg10, 1)
+                hotreb[player] = round(player.rpg10 - player.rpg, 1)
             else:
                 min_player = min(hotreb, key=hotreb.get)
-                if player.rpg - player.rpg10 > hotreb[min_player]:
+                if player.rpg10 - player.rpg > hotreb[min_player]:
                     del hotreb[min_player]
-                    hotreb[player] = round(player.rpg - player.rpg10, 1)
-        elif player.rpg - player.rpg10 < -3:
+                    hotreb[player] = round(player.rpg10 - player.rpg, 1)
+        elif player.rpg10 - player.rpg < -3:
             if len(coldreb) < 5:
-                coldreb[player] = round(player.rpg - player.rpg10, 1)
+                coldreb[player] = round(player.rpg10 - player.rpg, 1)
             else:
                 max_player = max(coldreb, key=coldreb.get)
-                if player.rpg - player.rpg10 < coldreb[max_player]:
+                if player.rpg10 - player.rpg < coldreb[max_player]:
                     del coldreb[max_player]
-                    coldreb[player] = round(player.rpg - player.rpg10, 1)
-        if player.apg - player.apg10 > 3:
+                    coldreb[player] = round(player.rpg10 - player.rpg, 1)
+        if player.apg10 - player.apg > 3:
             if len(hotast) < 5:
-                hotast[player] = round(player.apg - player.apg10, 1)
+                hotast[player] = round(player.apg10 - player.apg, 1)
             else:
                 min_player = min(hotast, key=hotast.get)
-                if player.apg - player.apg10 > hotast[min_player]:
+                if player.apg10 - player.apg > hotast[min_player]:
                     del hotast[min_player]
-                    hotast[player] = round(player.apg - player.apg10, 1)
-        elif player.apg - player.apg10 < -3:
+                    hotast[player] = round(player.apg10 - player.apg, 1)
+        elif player.apg10 - player.apg < -3:
             if len(coldast) < 5:
-                coldast[player] = round(player.apg - player.apg10, 1)
+                coldast[player] = round(player.apg10 - player.apg, 1)
             else:
                 max_player = max(coldast, key=coldast.get)
-                if player.apg - player.apg10 < coldast[max_player]:
+                if player.apg10 - player.apg < coldast[max_player]:
                     del coldast[max_player]
-                    coldast[player] = round(player.apg - player.apg10, 1)
-        if player.spg - player.spg10 > 1:
+                    coldast[player] = round(player.apg10 - player.apg, 1)
+        if player.spg10 - player.spg > 1:
             if len(hotstl) < 5:
-                hotstl[player] = round(player.spg - player.spg10, 1)
+                hotstl[player] = round(player.spg10 - player.spg, 1)
             else:
                 min_player = min(hotstl, key=hotstl.get)
-                if player.spg - player.spg10 > hotstl[min_player]:
+                if player.spg10 - player.spg > hotstl[min_player]:
                     del hotstl[min_player]
-                    hotstl[player] = round(player.spg - player.spg10, 1)
-        elif player.spg - player.spg10 < -1:
+                    hotstl[player] = round(player.spg10 - player.spg, 1)
+        elif player.spg10 - player.spg < -1:
             if len(coldstl) < 5:
-                coldstl[player] = round(player.spg - player.spg10, 1)
+                coldstl[player] = round(player.spg10 - player.spg, 1)
             else:
                 max_player = max(coldstl, key=coldstl.get)
-                if player.spg - player.spg10 < coldstl[max_player]:
+                if player.spg10 - player.spg < coldstl[max_player]:
                     del coldstl[max_player]
-                    coldstl[player] = round(player.spg - player.spg10, 1)
-        if player.bpg - player.bpg10 > 1:
+                    coldstl[player] = round(player.spg10 - player.spg, 1)
+        if player.bpg10 - player.bpg > 1:
             if len(hotblk) < 5:
-                hotblk[player] = round(player.bpg - player.bpg10, 1)
+                hotblk[player] = round(player.bpg10 - player.bpg, 1)
             else:
                 min_player = min(hotblk, key=hotblk.get)
-                if player.bpg - player.bpg10 > hotblk[min_player]:
+                if player.bpg10 - player.bpg > hotblk[min_player]:
                     del hotblk[min_player]
-                    hotblk[player] = round(player.bpg - player.bpg10, 1)
-        elif player.bpg - player.bpg10 < -1:
+                    hotblk[player] = round(player.bpg10 - player.bpg, 1)
+        elif player.bpg10 - player.bpg < -1:
             if len(coldblk) < 5:
-                coldblk[player] = round(player.bpg - player.bpg10, 1)
+                coldblk[player] = round(player.bpg10 - player.bpg, 1)
             else:
                 max_player = max(coldblk, key=coldblk.get)
-                if player.bpg - player.bpg10 < coldblk[max_player]:
+                if player.bpg10 - player.bpg < coldblk[max_player]:
                     del coldblk[max_player]
-                    coldblk[player] = round(player.bpg - player.bpg10, 1)
+                    coldblk[player] = round(player.bpg10 - player.bpg, 1)
 
     hotpts = OrderedDict(sorted(hotpts.items(), key=lambda item: item[1], reverse=True))
     coldpts = OrderedDict(sorted(coldpts.items(), key=lambda item: item[1]))

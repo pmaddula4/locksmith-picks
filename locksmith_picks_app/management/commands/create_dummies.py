@@ -46,20 +46,26 @@ class Command(BaseCommand):
             team = random.choice(teams)
             position = random.choice(["PG", "SG", "SF", "PF", "C"])
 
+            ppg = round(random.uniform(10, 35), 1)
+            rpg = round(random.uniform(3, 15), 1)
+            apg = round(random.uniform(2, 12), 1)
+            spg = round(random.uniform(0.5, 2.5), 1)
+            bpg = round(random.uniform(0.5, 2.5), 1)
+
             p = Player.objects.create(
                 name=player_names[i],
                 position=position,
                 team=team,
-                ppg=round(random.uniform(10, 35), 1),
-                rpg=round(random.uniform(3, 15), 1),
-                apg=round(random.uniform(2, 12), 1),
-                spg=round(random.uniform(0.5, 2.5), 1),
-                bpg=round(random.uniform(0.5, 2.5), 1),
-                ppg10=round(random.uniform(10, 35), 1),
-                rpg10=round(random.uniform(3, 15), 1),
-                apg10=round(random.uniform(2, 12), 1),
-                spg10=round(random.uniform(0.5, 2.5), 1),
-                bpg10=round(random.uniform(0.5, 2.5), 1),
+                ppg=ppg,
+                rpg=rpg,
+                apg=apg,
+                spg=spg,
+                bpg=bpg,
+                ppg10=round(random.uniform(ppg - 7, ppg + 10), 1),
+                rpg10=round(random.uniform(rpg - 5, rpg + 5), 1),
+                apg10=round(random.uniform(apg - 5, apg + 5), 1),
+                spg10=round(random.uniform(spg - 2, spg + 2), 1),
+                bpg10=round(random.uniform(bpg - 2, bpg + 2), 1),
             )
 
             self.stdout.write(self.style.SUCCESS(
