@@ -177,7 +177,8 @@ def hotandcold(request):
     return render(request, 'locksmith_picks_app/hotandcold.html', context)
 
 def l10(request):
-    players = Player.objects.all()
+    players = list(Player.objects.all())
+    players.sort(key = lambda p: p.name)
 
     return render(request, 'locksmith_picks_app/l10.html', {'players': players})
 
