@@ -529,6 +529,89 @@ th a:hover {
     text-align: center;
 }
 
+.hotandcold {
+    background-color: #131313;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.hotandcold h1 {
+    font-size: 3rem;
+    color: #CC5500;
+    text-align: center;
+    padding: 25px;
+}
+
+.h-player-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgba(50, 50, 50, 0.2);
+    color: #FF4500;
+    padding: 15px;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0;
+    align-items: center;
+
+}
+
+.h-player-info span {
+    text-align: center;
+}
+
+.c-player-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgba(50, 50, 50, 0.2);
+    color: #1E90FF;
+    padding: 15px;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0;
+    align-items: center;
+}
+
+.c-player-info span {
+    text-align: center;
+}
+
+.statpair {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.hotstat,
+.coldstat {
+    flex: 1;
+    min-width: 300px;
+    max-width: 700px;
+}
+
+.hotstat h1,
+.coldstat h1 {
+    text-align: center;
+    color: #CC5500;
+    margin-bottom: 20px;
+}
+
+
 
 @media screen and (max-width: 1080px){
     .main__container {
