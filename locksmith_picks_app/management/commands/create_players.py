@@ -13,7 +13,7 @@ class Command(BaseCommand):
                 "position": "PG",
                 "team_name": "Oklahoma City Thunder",
                 "ppg": 32.7, "rpg": 5, "apg": 6.4, "spg": 1.2, "bpg": 0.5,
-                "ppg10": 30.9, "rpg10": 4.8, "apg10": 5.9, "spg10": 1.8, "bpg10": 1
+                "ppg10": 30, "rpg10": 5, "apg10": 6.3, "spg10": 1.6, "bpg10": 1.2
             },
             {
                 "name": "Donovan Mitchell",
@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 "position": "PG",
                 "team_name": "Indiana Pacers",
                 "ppg": 18.6, "rpg": 3.5, "apg": 9.2, "spg": 1.4, "bpg": 0.7,
-                "ppg10": 17, "rpg10": 5.6, "apg10": 8.2, "spg10": 2, "bpg10": 0.6
+                "ppg10": 15.9, "rpg10": 5.2, "apg10": 7.5, "spg10": 1.7, "bpg10": 0.6
             },
             {
                 "name": "Anthony Edwards",
@@ -67,7 +67,7 @@ class Command(BaseCommand):
             {
                 "name": "Kevin Durant",
                 "position": "PF",
-                "team_name": "Phoenix Suns",
+                "team_name": "Houston Rockets",
                 "ppg": 26.6, "rpg": 6, "apg": 4.2, "spg": 0.8, "bpg": 1.2,
                 "ppg10": 24.6, "rpg10": 5.5, "apg10": 3.7, "spg10": 0.6, "bpg10": 0.9
             },
