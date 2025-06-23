@@ -13,7 +13,7 @@
                     <div class="h-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff }} more points than average!</span>
+                        <span>He is averaging <b>{{ diff }}</b> more points than average!</span>
                     </div>
                 {% endfor %}
             </div>
@@ -23,7 +23,7 @@
                     <div class="c-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff|absolute }} less points than average.</span>
+                        <span>He is averaging <b>{{ diff|absolute }}</b> less points than average.</span>
                     </div>
                 {% endfor %}
             </div>
@@ -35,7 +35,7 @@
                     <div class="h-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff }} more rebounds than average!</span>
+                        <span>He is averaging <b>{{ diff }}</b> more rebounds than average!</span>
                     </div>
                 {% endfor %}
             </div>
@@ -45,7 +45,7 @@
                     <div class="c-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff|absolute }} less rebounds than average.</span>
+                        <span>He is averaging <b>{{ diff|absolute }}</b> less rebounds than average.</span>
                     </div>
                 {% endfor %}
             </div>
@@ -57,7 +57,7 @@
                     <div class="h-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff }} more assists than average!</span>
+                        <span>He is averaging <b>{{ diff }}</b> more assists than average!</span>
                     </div>
                 {% endfor %}
             </div>
@@ -67,7 +67,7 @@
                     <div class="c-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff|absolute }} less assists than average.</span>
+                        <span>He is averaging <b>{{ diff|absolute }}</b> less assists than average.</span>
                     </div>
                 {% endfor %}
             </div>
@@ -79,7 +79,7 @@
                     <div class="h-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff }} more steals than average!</span>
+                        <span>He is averaging <b>{{ diff }}</b> more steals than average!</span>
                     </div>
                 {% endfor %}
             </div>
@@ -89,7 +89,7 @@
                     <div class="c-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff|absolute }} less steals than average.</span>
+                        <span>He is averaging <b>{{ diff|absolute }}</b> less steals than average.</span>
                     </div>
                 {% endfor %}
             </div>
@@ -101,7 +101,7 @@
                     <div class="h-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff }} more blocks than average!</span>
+                        <span>He is averaging <b>{{ diff }}</b> more blocks than average!</span>
                     </div>
                 {% endfor %}
             </div>
@@ -111,7 +111,7 @@
                     <div class="c-player-info">
                         <span>{{ player.name }}</span>
                         <span>{{ player.team.get_name_display }}</span>
-                        <span>He is averaging {{ diff|absolute }} less blocks than average.</span>
+                        <span>He is averaging <b>{{ diff|absolute }}</b> less blocks than average.</span>
                     </div>
                 {% endfor %}
             </div>

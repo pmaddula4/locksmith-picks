@@ -61,7 +61,7 @@ class Command(BaseCommand):
                 apg=apg,
                 spg=spg,
                 bpg=bpg,
-                ppg10=round(random.uniform(ppg - 7, ppg + 10), 1),
+                ppg10=round(random.uniform(ppg - 7, ppg + 7), 1),
                 rpg10=round(random.uniform(rpg - 5, rpg + 5), 1),
                 apg10=round(random.uniform(apg - 5, apg + 5), 1),
                 spg10=round(random.uniform(spg - 2, spg + 2), 1),
