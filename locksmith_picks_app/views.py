@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import MailingListForm
 from .models import Team, MailingListSubscriber, DVP, Player
 from collections import OrderedDict
+import numpy as np
 
-# Create your views here.
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
 
@@ -12,14 +12,14 @@ def defvpos(request):
     sort = request.GET.get('sort', 'team__name')
     order = request.GET.get('order', 'asc')
 
-    sort_options = [
-        'team__name',
+    stat_fields = [
         'points_allowed',
         'rebounds_allowed',
         'assists_allowed',
         'steals_allowed',
         'blocks_allowed'
     ]
+    sort_options = ['team__name'] + stat_fields
 
     if sort not in sort_options:
         sort = 'team__name'
@@ -30,7 +30,31 @@ def defvpos(request):
 
     stats = DVP.objects.filter(position = position).order_by(sort_field)
 
-    return render(request, 'locksmith_picks_app/defvpos.html', {'stats': stats, 'selected': position, 'current_sort': sort, 'current_order': order})
+    stats_list = list(stats)
+    means = {}
+    stddevs = {}
+
+    for stat in stat_fields:
+        values = [getattr(obj, stat) for obj in stats_list]
+        means[stat] = np.mean(values)
+        stddevs[stat] = np.std(values)
+
+    for obj in stats_list:
+        obj.flags = {}
+        for stat in stat_fields:
+            val = getattr(obj, stat)
+            mean = means[stat]
+            stddev = stddevs[stat]
+            if val > mean + stddev:
+                obj.flags[stat] = 'high'
+            elif val < mean - stddev:
+                obj.flags[stat] = 'low'
+            else:
+                obj.flags[stat] = 'normal'
+
+    context = {'stats': stats_list, 'selected': position, 'current_sort': sort, 'current_order': order}
+
+    return render(request, 'locksmith_picks_app/defvpos.html', context)
 
 def hotandcold(request):
     players = Player.objects.all()

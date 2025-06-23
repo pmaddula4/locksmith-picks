@@ -56,11 +56,11 @@
                 {% for stat in stats %}
                     <tr>
                         <td>{{ stat.team.get_name_display }}</td>
-                        <td>{{ stat.points_allowed }}</td>
-                        <td>{{ stat.rebounds_allowed }}</td>
-                        <td>{{ stat.assists_allowed }}</td>
-                        <td>{{ stat.steals_allowed }}</td>
-                        <td>{{ stat.blocks_allowed }}</td>
+                        <td class="{{ stat.flags.points_allowed }}">{{ stat.points_allowed }}</td>
+                        <td class="{{ stat.flags.rebounds_allowed }}">{{ stat.rebounds_allowed }}</td>
+                        <td class="{{ stat.flags.assists_allowed }}">{{ stat.assists_allowed }}</td>
+                        <td class="{{ stat.flags.steals_allowed }}">{{ stat.steals_allowed }}</td>
+                        <td class="{{ stat.flags.blocks_allowed }}">{{ stat.blocks_allowed }}</td>
                     </tr>
                 {% endfor %}
             </table>

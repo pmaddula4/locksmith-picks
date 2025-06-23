@@ -444,6 +444,18 @@ th a:hover {
     text-decoration: underline;
 }
 
+.high {
+    color: #FF4500
+}
+
+.low {
+    color: #1E90FF;
+}
+
+.normal {
+    color: #fff;
+}
+
 .pos-select button {
     color: #fff;
     background-color: #CC5500;

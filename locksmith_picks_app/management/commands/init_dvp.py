@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from locksmith_picks_app.models import Team, DVP, Player
+import random
 
 class Command(BaseCommand):
     help = 'initialize DVP'
@@ -14,11 +15,11 @@ class Command(BaseCommand):
                     team=team,
                     position=code,
                     defaults={
-                        'points_allowed': 0.0,
-                        'rebounds_allowed': 0.0,
-                        'assists_allowed': 0.0,
-                        'steals_allowed': 0.0,
-                        'blocks_allowed': 0.0,
+                        'points_allowed': round(random.uniform(20, 25), 2),
+                        'rebounds_allowed': round(random.uniform(8, 10), 2),
+                        'assists_allowed': round(random.uniform(4, 6), 2),
+                        'steals_allowed': round(random.uniform(1, 2), 2),
+                        'blocks_allowed': round(random.uniform(0.5, 1.5), 2)
                     }
                 )
                 if created:
