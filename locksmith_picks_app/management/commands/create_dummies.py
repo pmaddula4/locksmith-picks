@@ -62,10 +62,10 @@ class Command(BaseCommand):
                 spg=spg,
                 bpg=bpg,
                 ppg10=round(random.uniform(ppg - 7, ppg + 7), 1),
-                rpg10=round(random.uniform(rpg - 5, rpg + 5), 1),
-                apg10=round(random.uniform(apg - 5, apg + 5), 1),
-                spg10=round(random.uniform(spg - 2, spg + 2), 1),
-                bpg10=round(random.uniform(bpg - 2, bpg + 2), 1),
+                rpg10=round(random.uniform(0, rpg + 5), 1),
+                apg10=round(random.uniform(0, apg + 5), 1),
+                spg10=round(random.uniform(0, spg + 2), 1),
+                bpg10=round(random.uniform(0, bpg + 2), 1),
             )
 
             self.stdout.write(self.style.SUCCESS(
