@@ -9,7 +9,7 @@ class Command(BaseCommand):
     help = 'initialize teams with API'
 
     def handle(self, *args, **kwargs):
-        url = "https://api-nba-v2.p.rapidapi.com/teams"
+        url = "https://api-nba-v1.p.rapidapi.com/teams"
 
         headers = {
             "x-rapidapi-key": os.environ["RAPIDAPI_KEY"],

@@ -70,20 +70,18 @@ class Team(models.Model):
         return self.name
 
 class Player(models.Model):
-    POINTGUARD = 'PG'
-    SHOOTINGGUARD = 'SG'
-    SMALLFORWARD = 'SF'
-    POWERFORWARD = 'PF'
-    CENTER = 'C'
     POSITIONS = [
-        (POINTGUARD, 'Point Guard'),
-        (SHOOTINGGUARD, 'Shooting Guard'),
-        (SMALLFORWARD, 'Small Forward'),
-        (POWERFORWARD, 'Power Forward'),
-        (CENTER, 'Center')
+        ('G', 'Guard'),
+        ('F', 'Forward'),
+        ('C', 'Center'),
+        ('G-F', 'Guard-Forward'),
+        ('F-G', 'Forward-Guard'),
+        ('F-C', 'Forward-Center'),
+        ('C-F', 'Center-Forward')
     ]
     name = models.CharField(max_length = 25)
-    position = models.CharField(max_length = 2, choices = POSITIONS)
+    position = models.CharField(max_length = 4, choices = POSITIONS)
+    playerID = models.IntegerField(null = True, blank = True)
     ppg = models.FloatField(default = 0.0)
     rpg = models.FloatField(default = 0.0)
     apg = models.FloatField(default = 0.0)
@@ -130,8 +128,15 @@ class Player(models.Model):
         return self.bpg10
     
 class DVP(models.Model):
+    DVP_POSITIONS = [
+        ('PG', 'Point Guard'),
+        ('SG', 'Shooting Guard'),
+        ('SF', 'Small Forward'),
+        ('PF', 'Power Forward'),
+        ('C', 'Center')
+    ]
     team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'dvp')
-    position = models.CharField(max_length = 2, choices = Player.POSITIONS)
+    position = models.CharField(max_length = 2, choices = DVP_POSITIONS)
     points_allowed = models.FloatField(default = 0.0)
     rebounds_allowed = models.FloatField(default = 0.0)
     assists_allowed = models.FloatField(default = 0.0)
