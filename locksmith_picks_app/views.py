@@ -85,7 +85,7 @@ def hotandcold(request):
                 if player.ppg10 - player.ppg < coldpts[max_player]:
                     del coldpts[max_player]
                     coldpts[player] = round(player.ppg10 - player.ppg, 1)
-        if player.rpg10 - player.rpg > 2.25:
+        if player.rpg10 - player.rpg > 3:
             if len(hotreb) < 5:
                 hotreb[player] = round(player.rpg10 - player.rpg, 1)
             else:
@@ -93,7 +93,7 @@ def hotandcold(request):
                 if player.rpg10 - player.rpg > hotreb[min_player]:
                     del hotreb[min_player]
                     hotreb[player] = round(player.rpg10 - player.rpg, 1)
-        elif player.rpg10 - player.rpg < -2.25:
+        elif player.rpg10 - player.rpg < -3:
             if len(coldreb) < 5:
                 coldreb[player] = round(player.rpg10 - player.rpg, 1)
             else:
@@ -101,7 +101,7 @@ def hotandcold(request):
                 if player.rpg10 - player.rpg < coldreb[max_player]:
                     del coldreb[max_player]
                     coldreb[player] = round(player.rpg10 - player.rpg, 1)
-        if player.apg10 - player.apg > 1.5:
+        if player.apg10 - player.apg > 2.5:
             if len(hotast) < 5:
                 hotast[player] = round(player.apg10 - player.apg, 1)
             else:
@@ -109,7 +109,7 @@ def hotandcold(request):
                 if player.apg10 - player.apg > hotast[min_player]:
                     del hotast[min_player]
                     hotast[player] = round(player.apg10 - player.apg, 1)
-        elif player.apg10 - player.apg < -1.5:
+        elif player.apg10 - player.apg < -2.5:
             if len(coldast) < 5:
                 coldast[player] = round(player.apg10 - player.apg, 1)
             else:
@@ -117,7 +117,7 @@ def hotandcold(request):
                 if player.apg10 - player.apg < coldast[max_player]:
                     del coldast[max_player]
                     coldast[player] = round(player.apg10 - player.apg, 1)
-        if player.spg10 - player.spg > 0.75:
+        if player.spg10 - player.spg > 0.8:
             if len(hotstl) < 5:
                 hotstl[player] = round(player.spg10 - player.spg, 1)
             else:
@@ -125,7 +125,7 @@ def hotandcold(request):
                 if player.spg10 - player.spg > hotstl[min_player]:
                     del hotstl[min_player]
                     hotstl[player] = round(player.spg10 - player.spg, 1)
-        elif player.spg10 - player.spg < -0.75:
+        elif player.spg10 - player.spg < -0.8:
             if len(coldstl) < 5:
                 coldstl[player] = round(player.spg10 - player.spg, 1)
             else:
@@ -133,7 +133,7 @@ def hotandcold(request):
                 if player.spg10 - player.spg < coldstl[max_player]:
                     del coldstl[max_player]
                     coldstl[player] = round(player.spg10 - player.spg, 1)
-        if player.bpg10 - player.bpg > 0.5:
+        if player.bpg10 - player.bpg > 0.8:
             if len(hotblk) < 5:
                 hotblk[player] = round(player.bpg10 - player.bpg, 1)
             else:
@@ -141,7 +141,7 @@ def hotandcold(request):
                 if player.bpg10 - player.bpg > hotblk[min_player]:
                     del hotblk[min_player]
                     hotblk[player] = round(player.bpg10 - player.bpg, 1)
-        elif player.bpg10 - player.bpg < -0.5:
+        elif player.bpg10 - player.bpg < -0.8:
             if len(coldblk) < 5:
                 coldblk[player] = round(player.bpg10 - player.bpg, 1)
             else:

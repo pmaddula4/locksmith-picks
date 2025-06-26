@@ -437,7 +437,7 @@
     background-color: rgba(50, 50, 50, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    padding: 15px 5px;
+    padding: 15px 10px;
     margin-bottom: 9px;
     min-width: 1200px;
     box-shadow: 0 4px 30px rgba(0,0,0,0.6);
@@ -508,7 +508,7 @@
 
 .l10 h1 {
     font-size: 3rem;
-    color: #fff;
+    color: #CC5500;
     text-align: center;
     padding: 25px;
 }
@@ -524,16 +524,19 @@
 .l10-header {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    background-color: #131313;
+    background-color: rgba(50, 50, 50, 0.2);
     color: #CC5500;
     font-weight: bold;
-    padding: 5px;
+    padding: 15px 10px;
     width: 100%;;
     max-width: 1400px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     font-size: 1.5rem;
-    margin: 0;
+    margin: 9px ;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+
 }
 
 .player-info {
