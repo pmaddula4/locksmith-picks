@@ -19,48 +19,60 @@
             </form>
         </div>
 
-        <div class = "dvp-table">
-            <table>
+        <div class = "dvp-table-container">
+            <table class = "dvp-table">
                 <tr>
-                    <th>
-                        <a href="?position={{ selected }}&sort=team__name&order={% if current_sort == 'team__name' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Team
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?position={{ selected }}&sort=points_allowed&order={% if current_sort == 'points_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Points Allowed
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?position={{ selected }}&sort=rebounds_allowed&order={% if current_sort == 'rebounds_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Rebounds Allowed
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?position={{ selected }}&sort=assists_allowed&order={% if current_sort == 'assists_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Assists Allowed
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?position={{ selected }}&sort=steals_allowed&order={% if current_sort == 'steals_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Steals Allowed
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?position={{ selected }}&sort=blocks_allowed&order={% if current_sort == 'blocks_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
-                        Blocks Allowed
-                        </a>
-                    </th>
+                    <td colspan = "6">
+                        <div class = "row-card">
+                            <div class = "row-flex">
+                                <span>
+                                    <a href="?position={{ selected }}&sort=team__name&order={% if current_sort == 'team__name' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Team
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="?position={{ selected }}&sort=points_allowed&order={% if current_sort == 'points_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Points Allowed
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="?position={{ selected }}&sort=rebounds_allowed&order={% if current_sort == 'rebounds_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Rebounds Allowed
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="?position={{ selected }}&sort=assists_allowed&order={% if current_sort == 'assists_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Assists Allowed
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="?position={{ selected }}&sort=steals_allowed&order={% if current_sort == 'steals_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Steals Allowed
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="?position={{ selected }}&sort=blocks_allowed&order={% if current_sort == 'blocks_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    Blocks Allowed
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 {% for stat in stats %}
                     <tr>
-                        <td>{{ stat.team.get_name_display }}</td>
-                        <td class="{{ stat.flags.points_allowed }}">{{ stat.points_allowed }}</td>
-                        <td class="{{ stat.flags.rebounds_allowed }}">{{ stat.rebounds_allowed }}</td>
-                        <td class="{{ stat.flags.assists_allowed }}">{{ stat.assists_allowed }}</td>
-                        <td class="{{ stat.flags.steals_allowed }}">{{ stat.steals_allowed }}</td>
-                        <td class="{{ stat.flags.blocks_allowed }}">{{ stat.blocks_allowed }}</td>
+                        <td colspan="6">
+                            <div class="row-card">
+                                <div class="row-flex">
+                                    <span>{{ stat.team.get_name_display }}</span>
+                                    <span class="{{ stat.flags.points_allowed }}">{{ stat.points_allowed }}</span>
+                                    <span class="{{ stat.flags.rebounds_allowed }}">{{ stat.rebounds_allowed }}</span>
+                                    <span class="{{ stat.flags.assists_allowed }}">{{ stat.assists_allowed }}</span>
+                                    <span class="{{ stat.flags.steals_allowed }}">{{ stat.steals_allowed }}</span>
+                                    <span class="{{ stat.flags.blocks_allowed }}">{{ stat.blocks_allowed }}</span>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
