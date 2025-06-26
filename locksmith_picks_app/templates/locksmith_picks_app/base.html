@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="{% url 'index' %}" id="navbar__logo">🔒 LOCKSMITH PICKS</a>
+            <a href="{% url 'index' %}" id="navbar__logo">LOCKSMITH PICKS</a>
             <div class="navbar__toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -38,5 +38,6 @@
     </nav>
     {% block content %}
     {% endblock %}
+    <script src="{% static 'locksmith_picks_app/app.js' %}"></script>
 </body>
 </html>
