@@ -6,6 +6,29 @@
 {% block content %}
     <div class="l10">
         <h1>Last 10 Games Stats</h1>
+        <p>Use this page to see each player's stats over the last 10 games to exploit potential discrepancies with over/under lines.</p>
+
+        <div class = "l10-tools">
+
+            <div class = "player-search">
+                <form method = "GET">
+                    <label for="search">Search Player:</label>
+                    <input type = "text" name = "search" placeholder = "Search here" value = "{{ search_query }}">
+                    <button type = "submit">Search</button>
+                </form>
+            </div>
+
+            <div class="key">
+                <div class="key-matchup">
+                    <span class="dot easy"></span>
+                    <span class="key-label"> Easy Matchup </span>
+                </div>
+                <div class="key-matchup">
+                    <span class="dot difficult"></span>
+                    <span class="key-label"> Difficult Matchup </span>
+                </div>
+            </div>
+        </div>
 
         <div class = "l10-table">
             <div class="l10-header">

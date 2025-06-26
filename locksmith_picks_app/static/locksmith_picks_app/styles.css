@@ -318,7 +318,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
 }
 
 .tool {
@@ -328,6 +327,7 @@
     padding: 30px;
     text-align: left;
     max-width: 300px;
+    margin: 20px;
 }
 
 .tool a {
@@ -347,6 +347,32 @@
     color: #fff;
     line-height: 1.6;
     margin-top: 15px;
+}
+
+@media screen and (max-width: 1080px){
+    .main__container {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: 90vh;
+    }
+
+    .main__content {
+        text-align: center;
+    }
+
+    .main__content h1 {
+        font-weight: 2.5rem;
+        margin-top: 2rem;
+    }
+
+    .main__container p {
+        margin-top: 1rem;
+        font-size: 1.75rem;
+    }
 }
 
 .mailing-list {
@@ -447,6 +473,30 @@
     display: flex;
     justify-content: left;
     padding: 0 200px 0 0;
+}
+
+.pos-select button {
+    color: #fff;
+    background-color: #CC5500;
+    padding: 10px 20px;
+    border-radius: 32px;
+    font-weight: bold;
+}
+
+.pos-select button:hover {
+    background-color: #131313;
+    color: #CC5500;
+    transition: all 0.3s ease;    
+}
+
+.pos-select select {
+    padding: 10px 20px;
+    border-radius: 32px;
+    border: none;
+    background-color: #fff;
+    color: #131313;
+    font-weight: bold;
+    margin: 0 10px;
 }
 
 .key {
@@ -552,30 +602,6 @@
     color: #fff;
 }
 
-.pos-select button {
-    color: #fff;
-    background-color: #CC5500;
-    padding: 10px 20px;
-    border-radius: 32px;
-    font-weight: bold;
-}
-
-.pos-select button:hover {
-    background-color: #131313;
-    color: #CC5500;
-    transition: all 0.3s ease;    
-}
-
-.pos-select select {
-    padding: 10px 20px;
-    border-radius: 32px;
-    border: none;
-    background-color: #fff;
-    color: #131313;
-    font-weight: bold;
-    margin: 0 10px;
-}
-
 @media screen and (max-width: 1080px) {
     .pos-select {
         padding: 0 90px 0 0;
@@ -620,7 +646,65 @@
     font-size: 3rem;
     color: #CC5500;
     text-align: center;
-    padding: 25px;
+    padding: 25px 0 0;
+}
+
+.l10 p {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    padding: 25px 25px;
+}
+
+.l10-tools {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 0 30px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.player-search {
+    color: #fff;
+    font-size: 1.15rem;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    padding: 0 250px 0 0;
+}
+
+.player-search label {
+    color: #fff;
+    font-size: 1.15rem;
+}
+
+.player-search input {
+    padding: 10px 20px;
+    border-radius: 32px;
+    border: none;
+    background-color: #fff;
+    color: #131313;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.player-search button {
+    color: #fff;
+    background-color: #CC5500;
+    padding: 10px 20px;
+    border-radius: 32px;
+    font-weight: bold;
+}
+
+.player-search button:hover {
+    background-color: #131313;
+    color: #CC5500;
+    transition: all 0.3s ease;    
+}
+
+.l10 .key {
+    padding: 0 0 0 250px;
 }
 
 .l10-table {
@@ -695,6 +779,18 @@
     .player-info {
         max-width: 1000px;
     }
+
+    .l10-table {
+        padding: 0 20px;
+    }
+
+    .player-search {
+        padding: 0 25px;
+    }
+
+    .l10 .key {
+        padding: 0 25px;
+    }
 }
 
 .hotandcold {
@@ -702,16 +798,30 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     padding-bottom: 40px;
 }
 
 .hotandcold h1 {
+    font-size: 3rem;
+    color: #CC5500;
+    text-align: center;
+    padding: 25px 0 0;
+}
+
+.hotandcold p {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    padding: 25px 0;
+}
+
+.hotandcold .stathead {
     font-size: 2.5rem;
     color: #CC5500;
     text-align: center;
-    padding: 25px;
+    padding: 0 0 25px;
 }
 
 .h-player-info {
@@ -788,31 +898,4 @@
 .h-player-info:last-child,
 .c-player-info:last-child {
   margin-bottom: 0;
-}
-
-
-@media screen and (max-width: 1080px){
-    .main__container {
-        display: grid;
-        grid-template-columns: auto;
-        align-items: center;
-        justify-self: center;
-        width: 100%;
-        margin: 0 auto;
-        height: 90vh;
-    }
-
-    .main__content {
-        text-align: center;
-    }
-
-    .main__content h1 {
-        font-weight: 2.5rem;
-        margin-top: 2rem;
-    }
-
-    .main__container p {
-        margin-top: 1rem;
-        font-size: 1.75rem;
-    }
 }

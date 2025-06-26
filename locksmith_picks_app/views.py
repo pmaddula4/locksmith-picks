@@ -3,6 +3,9 @@ from .forms import MailingListForm
 from .models import Team, MailingListSubscriber, DVP, Player
 from collections import OrderedDict
 import numpy as np
+import mailchimp_marketing as MailchimpMarketing
+from mailchimp_marketing.api_client import ApiClientError
+from django.conf import settings
 
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
@@ -177,10 +180,41 @@ def hotandcold(request):
     return render(request, 'locksmith_picks_app/hotandcold.html', context)
 
 def l10(request):
-    players = list(Player.objects.all())
-    players.sort(key = lambda p: p.name)
+    query = request.GET.get('search', '')
+    
+    if query:
+        players = Player.objects.filter(name__icontains=query)
+    else:
+        players = Player.objects.all()
 
-    return render(request, 'locksmith_picks_app/l10.html', {'players': players})
+    players = players.order_by('name')
+    
+    return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
+
+def subscribe_to_mailinglist(email, first_name, last_name, favorite_team_name):
+    client = MailchimpMarketing.Client()
+    client.set_config({
+        "api_key": settings.MAILCHIMP_API_KEY,
+        "server": settings.MAILCHIMP_SERVER_PREFIX
+    })
+
+    try:
+        response = client.lists.add_list_member(settings.MAILCHIMP_AUDIENCE_ID, {
+            "email_address": email,
+            "status": "subscribed",
+            "merge_fields": {
+                "FNAME": first_name,
+                "LNAME": last_name,
+                "FTEAM": favorite_team_name
+            }
+        })
+        return response
+    except ApiClientError as error:
+        if "permanently deleted" in error.text:
+            print("User must manually re-subscribe.")
+        else:
+            print(f"Mailchimp error: {error.text}")
+        return None
 
 def mailinglist(request):
     form = MailingListForm()
@@ -192,19 +226,19 @@ def mailinglist(request):
         last_name = request.POST.get('last_name')
         favorite_team_id = request.POST.get('favorite_team')
         email = request.POST.get('email')
-        if favorite_team_id:
-            try:
-                favorite_team = Team.objects.get(id=favorite_team_id)
-            except Team.DoesNotExist:
-                favorite_team = None
-        else:
-            favorite_team = None
+
+        favorite_team = Team.objects.filter(id=favorite_team_id).first() if favorite_team_id else None
+        favorite_team_name = favorite_team.get_name_display() if favorite_team else None
+
         MailingListSubscriber.objects.create(
-            first_name = first_name,
-            last_name = last_name,
-            favorite_team = favorite_team,
-            email = email
+            first_name=first_name,
+            last_name=last_name,
+            favorite_team=favorite_team,
+            email=email
         )
+
+        subscribe_to_mailinglist(email, first_name, last_name, favorite_team_name)
+
         return redirect('index')
-    
+
     return render(request, 'locksmith_picks_app/mailinglist.html', {'form': form, 'teams': teams})
