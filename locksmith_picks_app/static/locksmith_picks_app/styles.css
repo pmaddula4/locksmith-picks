@@ -362,16 +362,25 @@
 
     .main__content {
         text-align: center;
+        margin-bottom: 25px;
     }
 
     .main__content h1 {
         font-weight: 2.5rem;
-        margin-top: 2rem;
+        margin: 2rem 50px 0;
     }
 
     .main__container p {
         margin-top: 1rem;
         font-size: 1.75rem;
+    }
+
+    .tools {
+        padding: 200px 20px 50px;
+    }
+
+    .main__img--container {
+        text-align: center;
     }
 }
 
