@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='test-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -74,14 +75,15 @@ WSGI_APPLICATION = 'locksmith_picks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DATABASE_NAME'),
-        'USER': config('DATABASE_USER'),
-        'PASSWORD': config('DATABASE_PASSWORD'),
-        'HOST': config('DATABASE_HOST'),
-        'PORT': config('DATABASE_PORT'),
+        'NAME': config('DATABASE_NAME', default='dummy-db'),
+        'USER': config('DATABASE_USER', default='dummy-user'),
+        'PASSWORD': config('DATABASE_PASSWORD', default='dummy-pass'),
+        'HOST': config('DATABASE_HOST', default='localhost'),
+        'PORT': config('DATABASE_PORT', default='5432'),
     }
 }
 
@@ -121,12 +123,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'locksmith_picks_app/static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MAILCHIMP_API_KEY = config('MAILCHIMP_API_KEY')
-MAILCHIMP_SERVER_PREFIX = config('MAILCHIMP_SERVER_PREFIX')
-MAILCHIMP_AUDIENCE_ID = config('MAILCHIMP_AUDIENCE_ID')
+MAILCHIMP_API_KEY = config('MAILCHIMP_API_KEY', default='dummy-key')
+MAILCHIMP_SERVER_PREFIX = config('MAILCHIMP_SERVER_PREFIX', default='usX')
+MAILCHIMP_AUDIENCE_ID = config('MAILCHIMP_AUDIENCE_ID', default='dummy-audience')
