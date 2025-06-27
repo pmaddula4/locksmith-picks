@@ -16,11 +16,11 @@ def defvpos(request):
     order = request.GET.get('order', 'asc')
 
     stat_fields = [
-        'points_allowed',
-        'rebounds_allowed',
-        'assists_allowed',
-        'steals_allowed',
-        'blocks_allowed'
+        'points_allowed_avg',
+        'rebounds_allowed_avg',
+        'assists_allowed_avg',
+        'steals_allowed_avg',
+        'blocks_allowed_avg',
     ]
     sort_options = ['team__name'] + stat_fields
 

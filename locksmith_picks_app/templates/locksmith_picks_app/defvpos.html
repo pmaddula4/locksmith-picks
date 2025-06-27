@@ -49,27 +49,27 @@
                                     </a>
                                 </span>
                                 <span>
-                                    <a href="?position={{ selected }}&sort=points_allowed&order={% if current_sort == 'points_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    <a href="?position={{ selected }}&sort=points_allowed_avg&order={% if current_sort == 'points_allowed_avg' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
                                     Points Allowed
                                     </a>
                                 </span>
                                 <span>
-                                    <a href="?position={{ selected }}&sort=rebounds_allowed&order={% if current_sort == 'rebounds_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    <a href="?position={{ selected }}&sort=rebounds_allowed_avg&order={% if current_sort == 'rebounds_allowed_avg' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
                                     Rebounds Allowed
                                     </a>
                                 </span>
                                 <span>
-                                    <a href="?position={{ selected }}&sort=assists_allowed&order={% if current_sort == 'assists_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    <a href="?position={{ selected }}&sort=assists_allowed_avg&order={% if current_sort == 'assists_allowed_avg' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
                                     Assists Allowed
                                     </a>
                                 </span>
                                 <span>
-                                    <a href="?position={{ selected }}&sort=steals_allowed&order={% if current_sort == 'steals_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    <a href="?position={{ selected }}&sort=steals_allowed_avg&order={% if current_sort == 'steals_allowed_avg' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
                                     Steals Allowed
                                     </a>
                                 </span>
                                 <span>
-                                    <a href="?position={{ selected }}&sort=blocks_allowed&order={% if current_sort == 'blocks_allowed' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
+                                    <a href="?position={{ selected }}&sort=blocks_allowed_avg&order={% if current_sort == 'blocks_allowed_avg' and current_order == 'asc' %}desc{% else %}asc{% endif %}">
                                     Blocks Allowed
                                     </a>
                                 </span>
@@ -83,11 +83,11 @@
                             <div class="row-card">
                                 <div class="row-flex">
                                     <span>{{ stat.team.get_name_display }}</span>
-                                    <span class="{{ stat.flags.points_allowed }}">{{ stat.points_allowed }}</span>
-                                    <span class="{{ stat.flags.rebounds_allowed }}">{{ stat.rebounds_allowed }}</span>
-                                    <span class="{{ stat.flags.assists_allowed }}">{{ stat.assists_allowed }}</span>
-                                    <span class="{{ stat.flags.steals_allowed }}">{{ stat.steals_allowed }}</span>
-                                    <span class="{{ stat.flags.blocks_allowed }}">{{ stat.blocks_allowed }}</span>
+                                    <span class="{{ stat.flags.points_allowed_avg }}">{{ stat.points_allowed_avg }}</span>
+                                    <span class="{{ stat.flags.rebounds_allowed_avg }}">{{ stat.rebounds_allowed_avg }}</span>
+                                    <span class="{{ stat.flags.assists_allowed_avg }}">{{ stat.assists_allowed_avg }}</span>
+                                    <span class="{{ stat.flags.steals_allowed_avg }}">{{ stat.steals_allowed_avg }}</span>
+                                    <span class="{{ stat.flags.blocks_allowed_avg }}">{{ stat.blocks_allowed_avg }}</span>
                                 </div>
                             </div>
                         </td>

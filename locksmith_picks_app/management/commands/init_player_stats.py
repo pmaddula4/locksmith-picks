@@ -1,8 +1,8 @@
 import requests, os
+import time
 from django.core.management.base import BaseCommand
 from locksmith_picks_app.models import Player
 from dotenv import load_dotenv
-import time
 
 load_dotenv()
 
@@ -30,56 +30,44 @@ class Command(BaseCommand):
                 response = requests.get(url, headers=headers, params=querystring)
                 response.raise_for_status()
 
-                time.sleep(8)
+                time.sleep(6.5)
 
                 data = response.json()
                 gamelogs = data.get("response", [])
+                self.stdout.write(self.style.SUCCESS(f"got {len(gamelogs)} games for {player.name} with id {player.playerID}"))
 
                 if not gamelogs:
                     self.stdout.write(self.style.WARNING(f"no stats for {player.name}"))
                     continue
 
-                total_pts = 0
-                total_reb = 0
-                total_ast = 0
-                total_stl = 0
-                total_blk = 0
+                gamelogs = sorted(gamelogs, key=lambda g: g["game"]["id"])
 
-                for game in gamelogs:
-                    total_pts += game.get("points", 0)
-                    total_reb += game.get("totReb", 0)
-                    total_ast += game.get("assists", 0)
-                    total_stl += game.get("steals", 0)
-                    total_blk += game.get("blocks", 0)
+                player.pts_summary = [g.get("points", 0) for g in gamelogs]
+                player.reb_summary = [g.get("totReb", 0) for g in gamelogs]
+                player.ast_summary = [g.get("assists", 0) for g in gamelogs]
+                player.stl_summary = [g.get("steals", 0) for g in gamelogs]
+                player.blk_summary = [g.get("blocks", 0) for g in gamelogs]
 
-                num_games = len(gamelogs)
-                if num_games > 0:
-                    player.ppg = round(total_pts / num_games, 1)
-                    player.rpg = round(total_reb / num_games, 1)
-                    player.apg = round(total_ast / num_games, 1)
-                    player.spg = round(total_stl / num_games, 1)
-                    player.bpg = round(total_blk / num_games, 1)
+                num_games = len(player.pts_summary)
+                if num_games:
+                    player.ppg = round(sum(player.pts_summary) / num_games, 1)
+                    player.rpg = round(sum(player.reb_summary) / num_games, 1)
+                    player.apg = round(sum(player.ast_summary) / num_games, 1)
+                    player.spg = round(sum(player.stl_summary) / num_games, 1)
+                    player.bpg = round(sum(player.blk_summary) / num_games, 1)
 
-                last10 = sorted(gamelogs, key=lambda g: g["game"]["id"], reverse=True)[:10]
-                l10_pts = 0
-                l10_reb = 0
-                l10_ast = 0
-                l10_stl = 0
-                l10_blk = 0
+                    l10_pts = player.pts_summary[-10:]
+                    l10_reb = player.reb_summary[-10:]
+                    l10_ast = player.ast_summary[-10:]
+                    l10_stl = player.stl_summary[-10:]
+                    l10_blk = player.blk_summary[-10:]
 
-                for game in last10:
-                    l10_pts += game.get("points", 0)
-                    l10_reb += game.get("totReb", 0)
-                    l10_ast += game.get("assists", 0)
-                    l10_stl += game.get("steals", 0)
-                    l10_blk += game.get("blocks", 0)
-
-                if last10:
-                    player.ppg10 = round(l10_pts / len(last10), 1)
-                    player.rpg10 = round(l10_reb / len(last10), 1)
-                    player.apg10 = round(l10_ast / len(last10), 1)
-                    player.spg10 = round(l10_stl / len(last10), 1)
-                    player.bpg10 = round(l10_blk / len(last10), 1)
+                    if len(l10_pts):
+                        player.ppg10 = round(sum(l10_pts) / len(l10_pts), 1)
+                        player.rpg10 = round(sum(l10_reb) / len(l10_reb), 1)
+                        player.apg10 = round(sum(l10_ast) / len(l10_ast), 1)
+                        player.spg10 = round(sum(l10_stl) / len(l10_stl), 1)
+                        player.bpg10 = round(sum(l10_blk) / len(l10_blk), 1)
 
                 player.save()
                 updated_count += 1

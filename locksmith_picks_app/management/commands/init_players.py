@@ -28,7 +28,7 @@ class Command(BaseCommand):
             response = requests.get(url, headers=headers, params=querystring)
             response.raise_for_status()
 
-            time.sleep(10)
+            time.sleep(7)
             
             data = response.json()
             players = data.get('response', [])

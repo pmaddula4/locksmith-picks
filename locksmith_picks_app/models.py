@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 class Team(models.Model):
     HAWKS = 'ATL'
@@ -82,50 +83,28 @@ class Player(models.Model):
     name = models.CharField(max_length = 25)
     position = models.CharField(max_length = 4, choices = POSITIONS)
     playerID = models.IntegerField(null = True, blank = True)
+    team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'players')
+
     ppg = models.FloatField(default = 0.0)
     rpg = models.FloatField(default = 0.0)
     apg = models.FloatField(default = 0.0)
     spg = models.FloatField(default = 0.0)
     bpg = models.FloatField(default = 0.0)
+
     ppg10 = models.FloatField(default = 0.0)
     rpg10 = models.FloatField(default = 0.0)
     apg10 = models.FloatField(default = 0.0)
     spg10 = models.FloatField(default = 0.0)
     bpg10 = models.FloatField(default = 0.0)
-    team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'players')
+
+    pts_summary = ArrayField(models.IntegerField(), default=list, blank=True)
+    reb_summary = ArrayField(models.IntegerField(), default=list, blank=True)
+    ast_summary = ArrayField(models.IntegerField(), default=list, blank=True)
+    stl_summary = ArrayField(models.IntegerField(), default=list, blank=True)
+    blk_summary = ArrayField(models.IntegerField(), default=list, blank=True)
 
     def __str__(self):
         return self.name
-    
-    def points(self):
-        return self.ppg
-    
-    def rebounds(self):
-        return self.rpg
-    
-    def assists(self):
-        return self.apg
-        
-    def steals(self):
-        return self.spg
-    
-    def blocks(self):
-        return self.bpg
-    
-    def points_l10(self):
-        return self.ppg10
-    
-    def rebounds_l10(self):
-        return self.rpg10
-    
-    def assists_l10(self):
-        return self.apg10
-    
-    def steals_l10(self):
-        return self.spg10
-    
-    def blocks_l10(self):
-        return self.bpg10
     
 class DVP(models.Model):
     DVP_POSITIONS = [
@@ -137,12 +116,21 @@ class DVP(models.Model):
     ]
     team = models.ForeignKey(Team, on_delete = models.CASCADE, related_name = 'dvp')
     position = models.CharField(max_length = 2, choices = DVP_POSITIONS)
-    points_allowed = models.FloatField(default = 0.0)
-    rebounds_allowed = models.FloatField(default = 0.0)
-    assists_allowed = models.FloatField(default = 0.0)
-    steals_allowed = models.FloatField(default = 0.0)
-    blocks_allowed = models.FloatField(default = 0.0)
 
+    points_allowed_avg = models.FloatField(default = 0.0)
+    rebounds_allowed_avg = models.FloatField(default = 0.0)
+    assists_allowed_avg = models.FloatField(default = 0.0)
+    steals_allowed_avg = models.FloatField(default = 0.0)
+    blocks_allowed_avg = models.FloatField(default = 0.0)
+
+    points_allowed_total = models.IntegerField(default = 0)
+    rebounds_allowed_total = models.IntegerField(default = 0)
+    assists_allowed_total = models.IntegerField(default = 0)
+    steals_allowed_total = models.IntegerField(default = 0)
+    blocks_allowed_total = models.IntegerField(default = 0)
+
+    gameLogs = models.IntegerField(default = 0)
+    
     class Meta:
         unique_together = ('team', 'position')
 

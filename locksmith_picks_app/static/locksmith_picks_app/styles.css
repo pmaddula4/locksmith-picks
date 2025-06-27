@@ -219,7 +219,7 @@
     z-index: 1;
     width: 100%;
     max-width: 2500px;
-    padding: 0 0;
+    padding: 50px 0;
 }
 
 .main__content h1 {
@@ -680,7 +680,7 @@
     align-items: center;
     display: flex;
     justify-content: left;
-    padding: 0 250px 0 0;
+    padding: 0 150px 0 0;
 }
 
 .player-search label {
@@ -713,7 +713,7 @@
 }
 
 .l10 .key {
-    padding: 0 0 0 250px;
+    padding: 0 0 0 150px;
 }
 
 .l10-table {
@@ -721,7 +721,7 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    padding-bottom: 40px;
+    padding: 0 15px 40px;
 }
 
 .l10-header {
@@ -823,7 +823,7 @@
     font-size: 1.2rem;
     color: #fff;
     text-align: center;
-    padding: 25px 0;
+    padding: 25px;
 }
 
 .hotandcold .stathead {
