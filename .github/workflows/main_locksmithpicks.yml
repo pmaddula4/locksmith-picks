@@ -38,6 +38,10 @@ jobs:
         run: |
           python manage.py collectstatic --noinput
 
+      - name: Debug staticfiles
+        run: |
+          ls -R staticfiles
+
       # - name: Run migrations
       #   run: |
       #     python manage.py migrate
