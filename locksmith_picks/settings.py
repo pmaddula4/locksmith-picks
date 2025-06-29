@@ -102,3 +102,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY')
 MAILCHIMP_SERVER_PREFIX = os.environ.get('MAILCHIMP_SERVER_PREFIX')
 MAILCHIMP_AUDIENCE_ID = os.environ.get('MAILCHIMP_AUDIENCE_ID')
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = [
+    'https://locksmithpicks-bwbgb4eqe2h6a2fn.centralus-01.azurewebsites.net',
+    'https://*.azurewebsites.net',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
