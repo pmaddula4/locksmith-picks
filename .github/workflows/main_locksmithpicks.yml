@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -38,9 +38,9 @@ jobs:
         run: |
           python manage.py collectstatic --noinput
 
-      - name: Debug staticfiles
-        run: |
-          ls -R staticfiles
+      # - name: Debug staticfiles
+      #   run: |
+      #     ls -R staticfiles
 
       - name: Run migrations
         run: |
@@ -52,8 +52,17 @@ jobs:
           DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
           DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
 
-      - name: Load initial data into database
-        run: python manage.py loaddata data.json
+      # - name: Load initial data into database
+      #   run: python manage.py loaddata data.json
+      #   env:
+      #     DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+      #     DATABASE_USER: ${{ secrets.DATABASE_USER }}
+      #     DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      #     DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+      #     DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+
+      - name: Delete benchwarmers
+        run: python manage.py delete_benchwarmers
         env:
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           DATABASE_USER: ${{ secrets.DATABASE_USER }}
