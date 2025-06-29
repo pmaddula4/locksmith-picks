@@ -55,6 +55,9 @@
 
 .navbar__item {
     height: 80px;
+    font-size: 1.7rem;
+    padding: 0 10px;
+    font-weight: 500;
 }
 
 .navbar__links {
@@ -451,6 +454,12 @@
     font-weight: 600;
 }
 
+@media screen and (max-width: 1080px) {
+    .mailing-list-form {
+        margin: 40px 10px;
+    }
+}
+
 .dvp {
     background-color: #131313;
     min-height: 100vh;
@@ -649,6 +658,10 @@
     .dvp-table tr {
         max-width: 100%;
     }
+
+    .dvp-tools {
+        gap: 20px;
+    }
 }
 
 .l10 {
@@ -807,12 +820,12 @@
         padding: 0 25px;
     }
 
-    .dvp-table-container {
+    .l10-table-container {
         overflow-x: auto;
         justify-content: normal;
     }
 
-    .l10 tools {
+    .l10 .tools {
         gap: 20px;
         padding: 10px 0; 
     }
