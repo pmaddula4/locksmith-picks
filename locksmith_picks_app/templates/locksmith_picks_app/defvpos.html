@@ -7,18 +7,18 @@
     <div class = "dvp">
 
         <h1>Defense vs. Position</h1>
-        <p>Use this page to target and exploit positional matchups using NBA team defense data vs. every position.</p>
+        <p>Use this page to target and exploit positional matchups using NBA team defense data vs. every position. You can also sort each stat by clicking on that stat you want to sort.</p>
 
         <div class = "dvp-tools">
             <div class = "pos-select">
                 <form method = "GET">
                     <label for="position">Select Position:</label>
                     <select name="position" id="position">
-                        <option value="PG" {% if selected == "PG" %} {% endif %}>Point Guard</option>
-                        <option value="SG" {% if selected == "SG" %} {% endif %}>Shooting Guard</option>
-                        <option value="SF" {% if selected == "SF" %} {% endif %}>Small Forward</option>
-                        <option value="PF" {% if selected == "PF" %} {% endif %}>Power Forward</option>
-                        <option value="C" {% if selected == "C" %} {% endif %}>Center</option>
+                        <option value="PG" {% if selected == "PG" %}selected{% endif %}>Point Guard</option>
+                        <option value="SG" {% if selected == "SG" %}selected{% endif %}>Shooting Guard</option>
+                        <option value="SF" {% if selected == "SF" %}selected{% endif %}>Small Forward</option>
+                        <option value="PF" {% if selected == "PF" %}selected{% endif %}>Power Forward</option>
+                        <option value="C" {% if selected == "C" %}selected{% endif %}>Center</option>
                     </select>
                     <button type="submit">Select</button>
                 </form>
