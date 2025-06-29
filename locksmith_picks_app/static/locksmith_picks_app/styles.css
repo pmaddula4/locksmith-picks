@@ -392,37 +392,37 @@
 
 @media screen and (max-width: 600px) {
     .tools {
-        padding: 30rem 20px 50px;
+        padding: 37rem 20px 50px;
     }
 }
 
 @media screen and (min-width: 601px) and (max-width: 825px) {
     .tools {
-        padding: 25rem 20px 50px;
+        padding: 32rem 20px 50px;
     }
 }
 
 @media screen and (min-width: 826px) and (max-width: 1000px) {
     .tools {
-        padding: 30rem 20px 50px;
+        padding: 37rem 20px 50px;
     }
 }
 
 @media screen and (min-width: 1001px) and (max-width: 1125px) {
     .tools {
-        padding: 35rem 20px 50px;
+        padding: 42rem 20px 50px;
     }
 }
 
 @media screen and (min-width: 1126px) and (max-width: 1250px) {
     .tools {
-        padding: 40rem 20px 50px;
+        padding: 47rem 20px 50px;
     }
 }
 
 @media screen and (min-width: 1251px) and (max-width: 1400px) {
     .tools {
-        padding: 45rem 20px 50px;
+        padding: 52rem 20px 50px;
     }
 }
 
