@@ -52,6 +52,14 @@ jobs:
           DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
           DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
 
+      - name: Create admin user
+        run: |
+          python manage.py create_admin
+        env:
+          DJANGO_ADMIN_USERNAME: ${{ secrets.DJANGO_ADMIN_USERNAME }}
+          DJANGO_ADMIN_PASSWORD: ${{ secrets.DJANGO_ADMIN_PASSWORD }}
+          DJANGO_ADMIN_EMAIL: ${{ secrets.DJANGO_ADMIN_EMAIL }}
+
       # - name: Load initial data into database
       #   run: python manage.py loaddata data.json
       #   env:
