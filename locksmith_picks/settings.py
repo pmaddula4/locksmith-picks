@@ -106,8 +106,8 @@ MAILCHIMP_AUDIENCE_ID = os.environ.get('MAILCHIMP_AUDIENCE_ID')
 # CSRF settings
 CSRF_TRUSTED_ORIGINS = [
     'https://locksmithpicks-bwbgb4eqe2h6a2fn.centralus-01.azurewebsites.net',
-    'locksmithpicks.org',
     'https://locksmithpicks.org',
+    'https://www.locksmithpicks.org',
     'https://*.azurewebsites.net',
 ]
 
