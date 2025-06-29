@@ -102,7 +102,7 @@
     transition: all 0.4s ease;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1400px) {
     .navbar__container {
         display: flex;
         justify-content: space-between;
@@ -142,7 +142,7 @@
         z-index: 99;
         height: auto;
         width: 100%;
-        max-width: 1080px;
+        max-width: 1400px;
         font-size: 1.6rem;
         flex-direction: column;
         align-items: center;
@@ -351,7 +351,7 @@
     margin-top: 15px;
 }
 
-@media screen and (max-width: 1080px){
+@media screen and (max-width: 1400px){
     .main__container {
         display: grid;
         grid-template-columns: auto;
@@ -454,9 +454,9 @@
     font-weight: 600;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1400px) {
     .mailing-list-form {
-        margin: 40px 10px;
+        margin: 40px auto;
     }
 }
 
@@ -624,7 +624,7 @@
     color: #fff;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1400px) {
     .pos-select {
         padding: 0 15px;
     }
@@ -799,7 +799,7 @@
     color: #fff;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1400px) {
     .l10-header {
         max-width: 1000px;
     }
@@ -937,4 +937,8 @@
 .h-player-info:last-child,
 .c-player-info:last-child {
   margin-bottom: 0;
+}
+
+html, body {
+    overflow-x: hidden;
 }
