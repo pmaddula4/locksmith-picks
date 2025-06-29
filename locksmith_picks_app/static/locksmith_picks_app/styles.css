@@ -621,13 +621,13 @@
     }
 
     .key {
-        padding: 0 0 0 90px;
+        padding: 0;
     }
 
     .dvp-table {
         width: 100%;
         margin: 0 auto;
-        min-width: unset;
+        min-width: 600px;
         max-width: 100%;
     }
 
@@ -642,7 +642,8 @@
     }
 
     .dvp-table-container {
-        overflow-x: hidden;
+        overflow-x: auto;
+        justify-content: normal;
     }
 
     .dvp-table tr {
