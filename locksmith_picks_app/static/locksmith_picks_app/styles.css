@@ -72,7 +72,6 @@
     justify-content: flex-end;
     align-items: center;
     padding: 0 10px;
-    width: 25%;
 }
 
 .button {
@@ -367,7 +366,7 @@
 
     .main__content h1 {
         font-weight: 2.5rem;
-        margin: 2rem 50px 0;
+        margin: 0 50px;
     }
 
     .main__container p {
@@ -377,10 +376,15 @@
 
     .tools {
         padding: 200px 20px 50px;
+        padding-top: 40rem;
     }
 
     .main__img--container {
         text-align: center;
+    }
+
+    .main__content p {
+        padding: 0 15px;
     }
 }
 
