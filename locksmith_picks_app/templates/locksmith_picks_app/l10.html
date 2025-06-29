@@ -30,31 +30,34 @@
             </div>
         </div>
 
-        <div class = "l10-table">
-            <div class="l10-header">
-                <span>Player</span>
-                <span>Position</span>
-                <span>Team</span>
-                <span>Points</span>
-                <span>Rebounds</span>
-                <span>Assists</span>
-                <span>Steals</span>
-                <span>Blocks</span>
-            </div>
-            
-            {% for player in players %}
-                <div class="player-info">
-                    <span>{{ player.name }}</span>
-                    <span>{{ player.position }}</span>
-                    <span>{{ player.team.get_name_display }}</span>
-                    <span class = "{% if player.ppg10 > player.ppg %}statshot{% elif player.ppg10 < player.ppg %}statscold{% else %}statsreg{% endif %}">{{ player.ppg10 }}</span>
-                    <span class = "{% if player.rpg10 > player.rpg %}statshot{% elif player.rpg10 < player.rpg %}statscold{% else %}statsreg{% endif %}">{{ player.rpg10 }}</span>
-                    <span class = "{% if player.apg10 > player.apg %}statshot{% elif player.apg10 < player.apg %}statscold{% else %}statsreg{% endif %}">{{ player.apg10 }}</span>
-                    <span class = "{% if player.spg10 > player.spg %}statshot{% elif player.spg10 < player.spg %}statscold{% else %}statsreg{% endif %}">{{ player.spg10 }}</span>
-                    <span class = "{% if player.bpg10 > player.bpg %}statshot{% elif player.bpg10 < player.bpg %}statscold{% else %}statsreg{% endif %}">{{ player.bpg10 }}</span>
+        <div class = "l10-table-container">
+            <div class = "l10-table">
+                <div class="l10-header">
+                    <span>Player</span>
+                    <span>Position</span>
+                    <span>Team</span>
+                    <span>Points</span>
+                    <span>Rebounds</span>
+                    <span>Assists</span>
+                    <span>Steals</span>
+                    <span>Blocks</span>
                 </div>
-            {% endfor %}
+                
+                {% for player in players %}
+                    <div class="player-info">
+                        <span>{{ player.name }}</span>
+                        <span>{{ player.position }}</span>
+                        <span>{{ player.team.get_name_display }}</span>
+                        <span class = "{% if player.ppg10 > player.ppg %}statshot{% elif player.ppg10 < player.ppg %}statscold{% else %}statsreg{% endif %}">{{ player.ppg10 }}</span>
+                        <span class = "{% if player.rpg10 > player.rpg %}statshot{% elif player.rpg10 < player.rpg %}statscold{% else %}statsreg{% endif %}">{{ player.rpg10 }}</span>
+                        <span class = "{% if player.apg10 > player.apg %}statshot{% elif player.apg10 < player.apg %}statscold{% else %}statsreg{% endif %}">{{ player.apg10 }}</span>
+                        <span class = "{% if player.spg10 > player.spg %}statshot{% elif player.spg10 < player.spg %}statscold{% else %}statsreg{% endif %}">{{ player.spg10 }}</span>
+                        <span class = "{% if player.bpg10 > player.bpg %}statshot{% elif player.bpg10 < player.bpg %}statscold{% else %}statsreg{% endif %}">{{ player.bpg10 }}</span>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
+        
     </div>
 
 {% endblock %}

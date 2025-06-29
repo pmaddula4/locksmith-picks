@@ -617,7 +617,7 @@
 
 @media screen and (max-width: 1080px) {
     .pos-select {
-        padding: 0 90px 0 0;
+        padding: 0 15px;
     }
 
     .key {
@@ -796,14 +796,25 @@
 
     .l10-table {
         padding: 0 20px;
+        min-width: 900px;
     }
 
     .player-search {
-        padding: 0 25px;
+        padding: 0 10px;
     }
 
     .l10 .key {
         padding: 0 25px;
+    }
+
+    .dvp-table-container {
+        overflow-x: auto;
+        justify-content: normal;
+    }
+
+    .l10 tools {
+        gap: 20px;
+        padding: 10px 0; 
     }
 }
 
