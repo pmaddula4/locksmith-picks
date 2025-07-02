@@ -639,7 +639,7 @@
 }
 
 .row-card a:hover {
-    color: #131313;
+    color: #fff;
     transition: all 0.3s ease;
 }
 
