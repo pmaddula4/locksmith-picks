@@ -7,7 +7,7 @@ import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
 from django.conf import settings
 from django.http import HttpResponse
-from django.core.cache import cache
+from django.views.decorators.cache import cache_page
 
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
@@ -187,19 +187,19 @@ def hotandcold(request):
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
 
+@cache_page(3600)
 def l10(request):
     try:
         query = request.GET.get('search', '')
+        
         if query:
-            players = Player.objects.filter(name__icontains=query).order_by('name')
-            return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
+            players = Player.objects.filter(name__icontains=query)
+        else:
+            players = Player.objects.all()
 
-        cached_players = cache.get("l10_all_players")
-        if cached_players is None:
-            cached_players = list(Player.objects.all().order_by('name'))
-            cache.set("l10_all_players", cached_players, timeout = 3600)
-
-        return render(request, 'locksmith_picks_app/l10.html', {'players': cached_players, 'search_query': ''})
+        players = players.order_by('name')
+        
+        return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
 
