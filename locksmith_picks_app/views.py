@@ -189,7 +189,7 @@ def hotandcold(request):
 
 def l10(request):
     try:
-        query = request.GET.get('search', '').strip()
+        query = request.GET.get('search', '')
         if query:
             players = Player.objects.filter(name__icontains=query).order_by('name')
             return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
