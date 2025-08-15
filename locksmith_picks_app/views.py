@@ -200,12 +200,12 @@ def l10(request):
             if cachedPlayers:
                 players = pickle.loads(cachedPlayers)
             else:
-                players = list(Player.objects.all().order_by('name'))
-                redis.set("l10_all_players", pickle.dumps(players), ex = 3600)
+                players = list(Player.objects.all().order_by('name').values())
+                redis.set("l10_all_players", pickle.dumps(players), ex=3600)
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
-        return HttpResponse(f"<pre>{e}</pre>")
+        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
 
 def subscribe_to_mailinglist(email, first_name, last_name, favorite_team_name):
     client = MailchimpMarketing.Client()
