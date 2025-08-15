@@ -202,7 +202,7 @@ def l10(request):
             if cachedPlayers:
                 players = pickle.loads(cachedPlayers)
             else:
-                players = list(Player.objects.all().order_by('name').values())
+                players = list(Player.objects.all().order_by('name'))
                 redis.set("l10_all_players", pickle.dumps(players), ex = 3600)
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
