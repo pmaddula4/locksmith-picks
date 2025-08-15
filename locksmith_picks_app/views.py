@@ -196,64 +196,14 @@ def l10(request):
         redis = get_redis()
         
         if query:
-            players = Player.objects.select_related('team').filter(name__icontains=query).order_by('name')
+            players = Player.objects.filter(name__icontains=query).order_by('name')
         else:
             cachedPlayers = redis.get("l10_all_players")
             if cachedPlayers:
-                playersData = pickle.loads(cachedPlayers)
-                players = []
-                
-                for data in playersData:
-                    class CachedPlayer:
-                        def __init__(self, playerData):
-                            self.name = playerData['name']
-                            self.position = playerData['position']
-                            self.ppg = playerData['ppg']
-                            self.rpg = playerData['rpg']
-                            self.apg = playerData['apg']
-                            self.spg = playerData['spg']
-                            self.bpg = playerData['bpg']
-                            self.ppg10 = playerData['ppg10']
-                            self.rpg10 = playerData['rpg10']
-                            self.apg10 = playerData['apg10']
-                            self.spg10 = playerData['spg10']
-                            self.bpg10 = playerData['bpg10']
-                            
-                            class CachedTeam:
-                                def __init__(self, teamDisplayName):
-                                    self._display_name = teamDisplayName
-                                
-                                def get_name_display(self):
-                                    return self._display_name
-                            
-                            self.team = CachedTeam(playerData['team_display_name'])
-                    
-                    players.append(CachedPlayer(data))
+                players = pickle.loads(cachedPlayers)
             else:
-                freshPlayers = Player.objects.select_related('team').all().order_by('name')
-                playersData = []
-                players = []
-                
-                for player in freshPlayers:
-                    playerData = {
-                        'name': player.name,
-                        'position': player.position,
-                        'ppg': player.ppg,
-                        'rpg': player.rpg,
-                        'apg': player.apg,
-                        'spg': player.spg,
-                        'bpg': player.bpg,
-                        'ppg10': player.ppg10,
-                        'rpg10': player.rpg10,
-                        'apg10': player.apg10,
-                        'spg10': player.spg10,
-                        'bpg10': player.bpg10,
-                        'team_display_name': player.team.get_name_display()
-                    }
-                    playersData.append(playerData)
-                    players.append(player)
-                
-                redis.set("l10_all_players", pickle.dumps(playersData), ex=3600)
+                players = list(Player.objects.all().order_by('name'))
+                redis.set("l10_all_players", pickle.dumps(players), ex = 60)
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
