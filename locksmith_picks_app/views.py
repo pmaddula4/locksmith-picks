@@ -193,13 +193,17 @@ def hotandcold(request):
 def l10(request):
     try:
         query = request.GET.get('search', '')
+        redis = get_redis()
         
         if query:
-            players = Player.objects.filter(name__icontains=query)
+            players = Player.objects.filter(name__icontains=query).order_by('name')
         else:
-            players = Player.objects.all()
-
-        players = players.order_by('name')
+            cachedPlayers = redis.get("l10_all_players")
+            if cachedPlayers:
+                players = pickle.loads(cachedPlayers)
+            else:
+                players = list(Player.objects.all().order_by('name').values())
+                redis.set("l10_all_players", pickle.dumps(players), ex = 3600)
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
@@ -259,12 +263,3 @@ def mailinglist(request):
         return render(request, 'locksmith_picks_app/mailinglist.html', {'form': form, 'teams': teams})
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
-    
-def redis_test(request):
-    try:
-        r = get_redis()
-        r.set("direct_test_key", "it works!")
-        val = r.get("direct_test_key")
-        return HttpResponse(f"Redis says: {val}")
-    except Exception as e:
-        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
