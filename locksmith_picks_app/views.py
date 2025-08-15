@@ -8,6 +8,7 @@ from mailchimp_marketing.api_client import ApiClientError
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
@@ -187,19 +188,20 @@ def hotandcold(request):
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
 
-@cache_page(3600, cache="default")
 def l10(request):
     try:
         query = request.GET.get('search', '')
         
         if query:
-            players = Player.objects.filter(name__icontains=query).order_by('name')
+            players = Player.objects.filter(name__icontains=query)
         else:
-            players = Player.objects.all().order_by('name')
+            players = Player.objects.all()
+
+        players = players.order_by('name')
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
-        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
+        return HttpResponse(f"<pre>{e}</pre>")
 
 def subscribe_to_mailinglist(email, first_name, last_name, favorite_team_name):
     client = MailchimpMarketing.Client()
@@ -255,3 +257,11 @@ def mailinglist(request):
         return render(request, 'locksmith_picks_app/mailinglist.html', {'form': form, 'teams': teams})
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
+    
+def redis_test(request):
+    try:
+        cache.set("test_key", "redis is working", timeout=10)
+        value = cache.get("test_key")
+        return HttpResponse(f"Redis test passed: {value}")
+    except Exception as e:
+        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
