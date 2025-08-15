@@ -187,17 +187,15 @@ def hotandcold(request):
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
 
-@cache_page(3600)
+@cache_page(3600, cache="default")
 def l10(request):
     try:
         query = request.GET.get('search', '')
         
         if query:
-            players = Player.objects.filter(name__icontains=query)
+            players = Player.objects.filter(name__icontains=query).order_by('name')
         else:
-            players = Player.objects.all()
-
-        players = players.order_by('name')
+            players = Player.objects.all().order_by('name')
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
