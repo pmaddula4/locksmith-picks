@@ -262,14 +262,9 @@ def mailinglist(request):
     
 def redis_test(request):
     try:
-        r = Redis(
-            host=os.environ.get("REDIS_HOSTNAME"),
-            port=6380,
-            password=os.environ.get("REDIS_PASSWORD"),
-            ssl=True
-        )
+        r = get_redis()
         r.set("direct_test_key", "it works!")
         val = r.get("direct_test_key")
-        return HttpResponse(f"Redis says: {val.decode()}")
+        return HttpResponse(f"Redis says: {val}")
     except Exception as e:
         return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
