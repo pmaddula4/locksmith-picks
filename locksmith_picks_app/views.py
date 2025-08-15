@@ -216,7 +216,7 @@ def l10(request):
             redis.set("teamMap", pickle.dumps(teamMap), ex=86400)
 
         for player in players:
-            player["team_display"] = teamMap.get(player["team"], "Unknown")
+            player["teamDisplay"] = teamMap.get(player["team"], "Unknown")
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
