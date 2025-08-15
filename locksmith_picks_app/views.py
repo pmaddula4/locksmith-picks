@@ -197,6 +197,7 @@ def l10(request):
         
         if query:
             players = Player.objects.filter(name__icontains=query).order_by('name')
+            return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
         else:
             cachedPlayers = redis.get("l10_all_players")
             if cachedPlayers:
