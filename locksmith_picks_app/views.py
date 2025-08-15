@@ -207,6 +207,16 @@ def l10(request):
                     'ppg10', 'rpg10', 'apg10', 'spg10', 'bpg10'
                 ))
                 redis.set("l10_all_players", pickle.dumps(players), ex=3600)
+
+        cacheTeamMap = redis.get("teamMap")
+        if cacheTeamMap:
+            teamMap = pickle.loads(cacheTeamMap)
+        else:
+            teamMap = {team.id: team.get_name_display() for team in Team.objects.all()}
+            redis.set("teamMap", pickle.dumps(teamMap), ex=86400)
+
+        for player in players:
+            player["team_display"] = teamMap.get(player["team"], "Unknown")
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
