@@ -8,5 +8,5 @@ urlpatterns = [
     path('hotandcold/', views.hotandcold, name="hotandcold"),
     path('l10/', views.l10, name="l10"),
     path('mailinglist/', views.mailinglist, name="mailinglist"),
-    # path("redis-test/", views.redis_test),
+    path("redis-test/", views.redis_test),
 ]

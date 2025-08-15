@@ -8,7 +8,9 @@ from mailchimp_marketing.api_client import ApiClientError
 from django.conf import settings
 from django.http import HttpResponse
 from .redis_client import get_redis
+from redis import Redis
 import pickle
+import os
 
 def index(request):
     return render(request, 'locksmith_picks_app/index.html')
@@ -191,21 +193,17 @@ def hotandcold(request):
 def l10(request):
     try:
         query = request.GET.get('search', '')
-        redis = get_redis()
         
         if query:
-            players = Player.objects.filter(name__icontains=query).order_by('name')
+            players = Player.objects.filter(name__icontains=query)
         else:
-            cachedPlayers = redis.get("l10_all_players")
-            if cachedPlayers:
-                players = pickle.loads(cachedPlayers)
-            else:
-                players = list(Player.objects.all().order_by('name').values())
-                redis.set("l10_all_players", pickle.dumps(players), ex=3600)
+            players = Player.objects.all()
+
+        players = players.order_by('name')
         
         return render(request, 'locksmith_picks_app/l10.html', {'players': players, 'search_query': query})
     except Exception as e:
-        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
+        return HttpResponse(f"<pre>{e}</pre>")
 
 def subscribe_to_mailinglist(email, first_name, last_name, favorite_team_name):
     client = MailchimpMarketing.Client()
@@ -262,10 +260,16 @@ def mailinglist(request):
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
     
-# def redis_test(request):
-#     try:
-#         cache.set("test_key", "redis is working", timeout=10)
-#         value = cache.get("test_key")
-#         return HttpResponse(f"Redis test passed: {value}")
-#     except Exception as e:
-#         return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
+def redis_direct_test(request):
+    try:
+        r = Redis(
+            host=os.environ.get("REDIS_HOSTNAME"),
+            port=6380,
+            password=os.environ.get("REDIS_PASSWORD"),
+            ssl=True
+        )
+        r.set("direct_test_key", "it works!")
+        val = r.get("direct_test_key")
+        return HttpResponse(f"Redis says: {val.decode()}")
+    except Exception as e:
+        return HttpResponse(f"<pre>{type(e).__name__}: {e}</pre>")
