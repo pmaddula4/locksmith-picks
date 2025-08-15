@@ -260,7 +260,7 @@ def mailinglist(request):
     except Exception as e:
         return HttpResponse(f"<pre>{e}</pre>")
     
-def redis_direct_test(request):
+def redis_test(request):
     try:
         r = Redis(
             host=os.environ.get("REDIS_HOSTNAME"),
