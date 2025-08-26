@@ -38,6 +38,7 @@
 **Deployment & Infrastructure:**
 - Microsoft Azure App Service
 - GitHub Actions (for CI/CD and scheduled stat updates)
+- Redis (for caching and faster stat retrieval)
 
 **Third-Party APIs:**
 - API-NBA: Used for daily automated ingestion of daily NBA player and team statistics.
