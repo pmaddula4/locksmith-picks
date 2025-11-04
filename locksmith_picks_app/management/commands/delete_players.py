@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from locksmith_picks_app.models import Team, Player
 
 class Command(BaseCommand):
-    help = "create 10 players"
+    help = "delete players"
 
     def handle(self, *args, **kwargs):
         Player.objects.all().delete()
