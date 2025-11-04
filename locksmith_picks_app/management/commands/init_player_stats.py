@@ -25,7 +25,7 @@ class Command(BaseCommand):
                 player = Player.objects.get(playerID=player_id)
                 self.stdout.write(self.style.SUCCESS(f"updating {player.name} with id {player.playerID}"))
 
-                querystring = {"id": player.playerID, "season": "2024"}
+                querystring = {"id": player.playerID, "season": "2025"}
 
                 response = requests.get(url, headers=headers, params=querystring)
                 response.raise_for_status()

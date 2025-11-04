@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
         for teamID in team_ids:
 
-            querystring = {"team":teamID,"season":"2024"}
+            querystring = {"team":teamID,"season":"2025"}
             response = requests.get(url, headers=headers, params=querystring)
             response.raise_for_status()
 
